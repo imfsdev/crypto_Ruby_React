@@ -6,9 +6,12 @@ class CryptocurrenciesController < ApiController
     render json: @cryptos.to_json
   end
 
-  def new 
+  def new
     @crypto = Cryptocurrency.new
   end
 
-  def 
+  def show
+    @crypto = Cryptocurrency.find(params[:id])
+    render json: @crypto.to_json
+  end
 end
