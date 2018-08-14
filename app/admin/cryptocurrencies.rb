@@ -5,7 +5,7 @@ ActiveAdmin.register Cryptocurrency do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
-  permit_params :ticker, :name, :last_price
+  permit_params :name, :symbol, :user_id
   #
   # or
   #
