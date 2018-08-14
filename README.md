@@ -6,7 +6,7 @@ bin/rake db:reset
 ```
 
 
-To start the dev server ```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and  to star the clientclient ```yarn --cwd client start```
+To start the dev server ```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and to start the client ```yarn --cwd client start```
 
 
 
