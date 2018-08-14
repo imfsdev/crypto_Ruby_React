@@ -6,13 +6,13 @@ import './app.scss';
 @inject('authStore')
 @observer
 class App extends Component {
-
   componentDidMount() {
-    window.fetch('/api/cryptocurrencies/1')
+    window
+      .fetch('/api/cryptocurrencies/1')
       .then(response => response.json())
       .then(json => console.log(json))
       .catch(error => console.log(error));
-      console.log(this.props.authStore.isLoaded)
+    console.log(this.props.authStore.isLoaded);
   }
 
   render() {
