@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'antd/lib/button';
-import './App.css';
+import './styles/App.scss'
 
 class App extends Component {
   componentDidMount() {
