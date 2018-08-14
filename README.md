@@ -4,6 +4,12 @@ There is a function inside seeds.rb that makes an api call to coinmarketcap.
 ```
 bin/rake db:reset
 ```
+
+
+To start the dev server ```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and  to star the clientclient ```yarn --cwd client start```
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
