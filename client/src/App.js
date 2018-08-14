@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import logo from './logo.svg';
 import './app.scss';
 
+@inject('authStore')
+@observer
 class App extends Component {
 
-  // componentDidMount() {
-  //   window.fetch('/api/cryptocurrencies/1')
-  //     .then(response => response.json())
-  //     .then(json => console.log(json))
-  //     .catch(error => console.log(error));
-  // }
+  componentDidMount() {
+    window.fetch('/api/cryptocurrencies/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => console.log(error));
+      console.log(this.props.authStore.isLoaded)
+  }
 
   render() {
     return (
