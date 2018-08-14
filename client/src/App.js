@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './Components/Layout/Home/Home';
+import Home from './Components/Pages/Home/Home';
+import SignUp from './Components/Pages/SignUp/SignUp';
+import LogIn from './Components/Pages/LogIn/LogIn';
 
 class App extends Component {
   render() {
@@ -9,6 +10,8 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/signup" exact component={SignUp} />
+          <Route path="/login" exact component={LogIn} />
         </Switch>
       </BrowserRouter>
     );
