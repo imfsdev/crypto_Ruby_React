@@ -5,4 +5,10 @@ class CryptocurrenciesController < ApiController
     @cryptos = Cryptocurrency.all
     render json: @cryptos.to_json
   end
+
+  def new 
+    @crypto = Cryptocurrency.new
+  end
+
+  def 
 end

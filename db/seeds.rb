@@ -9,18 +9,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
-# TODO: create some way to put all cryptos here
-
 require 'net/http'
 require 'json'
 url = 'https://api.coinmarketcap.com/v2/ticker/'
 uri = URI(url)
 response = Net::HTTP.get(uri)
 r = JSON.parse(response)
-
+# gets the data hash from the response
 data = r['data']
-
-#  for each item in data we want to loop over it and get the name and symbol
+# data is an array with an id and then an hash, so we just need the hash at index 1
+# for each item in data we create a cryptocurrency with the name and symbol
 data.each do |item|
   Cryptocurrency.create!(
     name: item[1]['name'],

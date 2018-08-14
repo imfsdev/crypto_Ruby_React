@@ -1,5 +1,9 @@
 # README
-
+To add the top 100 cryptos to the database and run 
+There is a function inside seeds.rb that makes an api call to coinmarketcap.
+```
+bin/rake db:reset
+```
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
