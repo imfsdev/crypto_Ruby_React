@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_100700) do
+ActiveRecord::Schema.define(version: 2018_08_14_103810) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2018_08_14_100700) do
   create_table "cryptocurrencies", force: :cascade do |t|
     t.string "name"
     t.string "symbol"
-    t.integer "user_id"
   end
 
   create_table "user_cryptocurrencies", force: :cascade do |t|
