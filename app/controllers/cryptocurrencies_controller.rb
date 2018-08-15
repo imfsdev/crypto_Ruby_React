@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CryptocurrenciesController < ApiController
+class CryptocurrenciesController < ActionController::Base
   def index
     @cryptos = Cryptocurrency.all
     render json: @cryptos.to_json
