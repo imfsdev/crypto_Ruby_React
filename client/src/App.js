@@ -4,6 +4,7 @@ import Home from './Components/Pages/Home/Home';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import LogIn from './Components/Pages/LogIn/LogIn';
 
+import '../src/styles/app.scss';
 // TODO: make it so the user redirects to their profile if they are logged in (can't go to login)
 class App extends Component {
   render() {
