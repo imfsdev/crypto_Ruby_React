@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { inject, observer } from 'mobx-react';
-import jwtDecode from 'jwt-decode';
 
-import setAuthToken from '../../../utils/setAuthToken';
+import LoginForm from './LoginForm/LoginForm';
+
+// import authStore from '../../../stores/authStore';
 
 @inject('authStore')
 @observer
-class LogIn extends Component {
-  componentDidMount() {
-    console.log(this.props.authStore.loginUser());
-  }
-
+class Login extends Component {
   render() {
+    console.log(this.props.authStore.user);
+    // eslint-disable-next-line
+    const { authStore } = this.props;
     return (
       <div>
-        <p>login</p>
+        <LoginForm />
+        <div className="button"> bulma</div>
       </div>
     );
   }
 }
 
-export default LogIn;
+export default Login;
