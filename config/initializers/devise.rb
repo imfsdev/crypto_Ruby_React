@@ -281,8 +281,17 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   # TODO: change me
+
   config.jwt do |jwt|
-    jwt.secret = "hello"
-    jwt.dispatch_requests = [ ["POST", %r{^/authentication_tokens$}] ]
+    jwt.secret = ENV["DEVISE_JWT_SECRET_KEY"]
+    jwt.dispatch_requests = [
+      ["POST", %r{^/users/sign_in$}]
+    ]
+    jwt.revocation_requests = [
+      ["DELETE", %r{^/users/sign_out$}]
+    ]
+    jwt.expiration_time = 1.day.to_i
   end
+
+  config.navigational_formats = []
 end
