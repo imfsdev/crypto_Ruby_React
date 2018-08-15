@@ -9,7 +9,6 @@ class AuthStore {
   user = {};
   @action
   loginUser = userData => {
-    console.log(userData);
     axios
       .post('/users/sign_in', {
         user: {
