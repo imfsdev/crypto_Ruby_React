@@ -10,14 +10,13 @@ class AuthStore {
   @action
   loginUser = userData => {
     axios
-      .post('/users/sign_in', {
-        user: {
-          email: 'hi@lol.com',
-          password: 'password'
-        }
+      .post('/auth/login', {
+        name: 'hello2',
+        email: 'hello@world2',
+        password: 'password2'
       })
       .then(res => {
-        this.user = res.data;
+        this.user = jwtDecode(res.data.access_token);
         console.log(this.user);
       })
       .catch(err => {
