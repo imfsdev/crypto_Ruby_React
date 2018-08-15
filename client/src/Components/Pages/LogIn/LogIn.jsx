@@ -3,16 +3,13 @@ import axios from 'axios';
 import { inject, observer } from 'mobx-react';
 import jwtDecode from 'jwt-decode';
 
+import setAuthToken from '../../../utils/setAuthToken';
+
 @inject('authStore')
 @observer
 class LogIn extends Component {
   componentDidMount() {
-    this.props.authStore.loginUser({
-      user: {
-        email: 'hello@world.com',
-        password: 'password'
-      }
-    });
+    console.log(this.props.authStore.loginUser());
   }
 
   render() {
