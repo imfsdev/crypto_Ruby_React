@@ -10,12 +10,13 @@ class JsonWebToken
       payload[:exp] = exp.to_i
 
       # this encodes the user data(payload) with our secret key
-      JWT.encode(payload, "hello")
+      JWT.encode(payload, ENV["JWT_KEY"])
     end
 
     def decode(token)
       # decodes the token to get user data (payload)
-      body = JWT.decode(token, "hello")
+      # TODO: make this work properly in production
+      body = JWT.decode(token, ENV["JWT_KEY"])
       HashWithIndifferentAccess.new body
 
     # raise custom error to be handled by custom handler
