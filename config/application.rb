@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-require_relative "boot"
+require_relative 'boot'
 
 require "rails"
 # Pick the frameworks you want:
@@ -12,14 +10,14 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
-require "sprockets/railtie"
-require "rails/test_unit/railtie"
+# require "sprockets/railtie"
+# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Crypto
+module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -33,12 +31,5 @@ module Crypto
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    # scaffold fix for activeadmin
-    config.app_generators.scaffold_controller = :scaffold_controller
-    # Middleware for ActiveAdmin
-    config.middleware.use Rack::MethodOverride
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end
