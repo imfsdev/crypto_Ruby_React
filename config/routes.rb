@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope :api, defaults: { format: :json } do
-    resources :examples
-    devise_for :users, controllers: { sessions: "sessions" }
-    devise_scope :user do
-      get "users/current", to: "sessions#show"
-    end
-  end
+  devise_for :users,
+             controllers: {
+               sessions: "sessions",
+               registrations: "registrations"
+             }
+
   # TODO: check if this needs to be scoped to /api later
   # devise_for :admin_users, ActiveAdmin::Devise.config
   # TODO: enable activeadmin routes

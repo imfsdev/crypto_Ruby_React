@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { inject, observer } from 'mobx-react';
+import jwtDecode from 'jwt-decode';
 
-export default class LogIn extends Component {
+@inject('authStore')
+@observer
+class LogIn extends Component {
   componentDidMount() {
-    axios
-      .post('/api/users/sign_in', { user: { email: 'hello@world.com', password: 'password' } })
-      .then(res => {
-        console.log(res);
-      });
+    this.props.authStore.loginUser({
+      user: {
+        email: 'hello@world.com',
+        password: 'password'
+      }
+    });
   }
 
   render() {
@@ -18,3 +23,5 @@ export default class LogIn extends Component {
     );
   }
 }
+
+export default LogIn;
