@@ -13,5 +13,5 @@ class CryptocurrenciesController < ActionController::Base
   def show
     @crypto = Cryptocurrency.find(params[:id])
     render json: @crypto.to_json
-  end
+   end
 end
