@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_15_211226) do
+ActiveRecord::Schema.define(version: 2018_08_15_213812) do
 
   create_table "cryptocurrencies", force: :cascade do |t|
     t.string "name"
     t.string "symbol"
+  end
+
+  create_table "user_cryptocurrencies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "cryptocurrency_id"
+    t.index ["cryptocurrency_id"], name: "index_user_cryptocurrencies_on_cryptocurrency_id"
+    t.index ["user_id"], name: "index_user_cryptocurrencies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
