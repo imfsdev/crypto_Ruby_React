@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { withFormik } from 'formik';
+import Yup from 'yup';
 
-export default class SignUp extends Component {
+class SignUp extends Component {
   state = {
     signup: true,
     login: false
@@ -26,6 +28,10 @@ export default class SignUp extends Component {
     console.log(this.state);
   };
   render() {
+    const { values } = this.props;
+
+    console.log(values);
+
     return (
       <section className="hero signup">
         <div className="hero-body">
@@ -48,19 +54,27 @@ export default class SignUp extends Component {
                     </button>
                   </div>
                 </div>
-                <form>
+                <form id="basic-form">
                   <div className="field">
                     <div className="control">
-                      <input className="input" type="email" placeholder="Your Email" />
+                      <input
+                        field="email"
+                        className="input"
+                        name="email"
+                        type="email"
+                        // placeholder="Your Email"
+                        value={values.email}
+                      />
                     </div>
                   </div>
-
                   <div className="field">
                     <div className="control">
                       <input className="input" type="password" placeholder="Your Password" />
                     </div>
                   </div>
-                  <button className="button is-block is-info is-fullwidth">Sign Up</button>
+                  <button type="submit" className="button is-block is-info is-fullwidth">
+                    Sign Up
+                  </button>
                   <a href="/" className="help">
                     Forgot your password?
                   </a>
@@ -74,3 +88,13 @@ export default class SignUp extends Component {
     );
   }
 }
+
+const FormikSignUp = withFormik({
+  mapPropsToValues() {
+    return {
+      email: 'test text'
+    };
+  }
+})(SignUp);
+
+export default FormikSignUp;
