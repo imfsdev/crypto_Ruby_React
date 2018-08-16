@@ -1,0 +1,15 @@
+@import '../../../styles/variables.scss';
+.signup {
+  &-buttons {
+    padding-right: 0px;
+    &-signup {
+      // padding-right: 0px;
+      div {
+        border-bottom: 2px solid $primary-color;
+      }
+    }
+    &-login {
+      // padding-left: 0px;
+    }
+  }
+}
