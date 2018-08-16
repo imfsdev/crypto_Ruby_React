@@ -29,7 +29,7 @@ class SignUp extends Component {
     console.log(this.state);
   };
   render() {
-    const { values, handleChange } = this.props;
+    const { values, errors } = this.props;
 
     return (
       <section className="hero signup">
@@ -117,6 +117,17 @@ const FormikSignUp = withFormik({
       password: ''
     };
   },
+  validationSchema: Yup.object().shape({
+    name: Yup.string()
+      .required()
+      .min(3),
+    email: Yup.string()
+      .email()
+      .required(),
+    password: Yup.string()
+      .min(6)
+      .required()
+  }),
   handleSubmit(values) {
     // post request goes here
     console.log(values);
