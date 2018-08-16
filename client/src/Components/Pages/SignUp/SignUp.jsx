@@ -7,7 +7,6 @@ export default class SignUp extends Component {
         <div className="hero-body">
           <div className="container has-text-centered">
             <div className="column is-4 is-offset-4">
-              <h3 className="title has-text-grey">Sign Up</h3>
               <div className="box">
                 <div className="columns is-mobile signup-buttons">
                   <div className="column is-half-mobile signup-buttons-signup">

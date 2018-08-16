@@ -6,10 +6,12 @@
       // padding-right: 0px;
       div {
         border-bottom: 2px solid $primary-color;
+        &:hover {
+          border-bottom: 2px solid darken($color: $primary-color, $amount: 10);
+        }
       }
-    }
-    &-login {
-      // padding-left: 0px;
-    }
+    } // &-login {
+    // padding-left: 0px;
+    // }
   }
 }
