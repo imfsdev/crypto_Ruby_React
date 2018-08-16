@@ -33,7 +33,7 @@ class Auth extends Component {
     console.log(this.state);
   };
   render() {
-    const { values, errors } = this.props;
+    const { values, errors, touched } = this.props;
     return (
       <section className="hero auth">
         <div className="hero-body">
@@ -62,12 +62,14 @@ class Auth extends Component {
                       <div className="help has-text-grey-dark">Username</div>
                       <Field
                         field="name"
-                        className={`input ${errors.name ? 'is-danger' : ''}`}
+                        className={`input ${touched.name && errors.name ? 'is-danger' : ''}`}
                         name="name"
                         autoComplete="username"
                         placeholder="Your Username"
                       />
-                      {errors.name && <p className="help is-danger">{errors.name}</p>}
+                      {errors.name && (
+                        <p className="help is-danger">{touched.name && errors.name}</p>
+                      )}
                     </div>
                   </div>
                   <div className="field">
@@ -75,13 +77,15 @@ class Auth extends Component {
                       <div className="help has-text-grey-dark">Email</div>
                       <Field
                         field="email"
-                        className={`input ${errors.email ? 'is-danger' : ''}`}
+                        className={`input ${touched.email && errors.email ? 'is-danger' : ''}`}
                         placeholder="Your Email"
                         name="email"
                         type="email"
                         autoComplete="email"
                       />
-                      {errors.email && <p className="help is-danger">{errors.email}</p>}
+                      {errors.email && (
+                        <p className="help is-danger">{touched.email && errors.email}</p>
+                      )}
                     </div>
                   </div>
                   <div className="field">
@@ -89,13 +93,17 @@ class Auth extends Component {
                       <div className="help has-text-grey-dark">Password</div>
                       <Field
                         field="password"
-                        className={`input ${errors.password ? 'is-danger' : ''}`}
+                        className={`input ${
+                          touched.password && errors.password ? 'is-danger' : ''
+                        }`}
                         name="password"
                         type="password"
                         autoComplete="current-password"
                         placeholder="Your Password"
                       />
-                      {errors.password && <p className="help is-danger">{errors.password}</p>}
+                      {errors.password && (
+                        <p className="help is-danger">{touched.password && errors.password}</p>
+                      )}
                     </div>
                   </div>
                   <button type="submit" className="button is-block is-info is-fullwidth">
