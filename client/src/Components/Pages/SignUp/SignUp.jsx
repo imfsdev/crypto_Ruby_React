@@ -34,35 +34,24 @@ export default class SignUp extends Component {
               <div className="box">
                 <div className="columns is-mobile signup-buttons">
                   <div className="column is-half-mobile">
-                    <div
-                      tabIndex="0"
-                      onKeyDown={this.toggleForm}
-                      role="button"
+                    <button
                       onClick={this.toggleForm}
                       id="signup"
                       className="button is-fullwidth signup-active"
                     >
                       Sign Up
-                    </div>
+                    </button>
                   </div>
                   <div className="column is-half-mobile">
-                    <div
-                      tabIndex="0"
-                      onKeyDown={this.toggleForm}
-                      role="button"
-                      id="login"
-                      onClick={this.toggleForm}
-                      className="button is-fullwidth"
-                    >
+                    <button id="login" onClick={this.toggleForm} className="button is-fullwidth">
                       Log in
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <form>
                   <div className="field">
                     <div className="control">
-                      {/* eslint-disable-next-line */}
-                      <input className="input" type="email" placeholder="Your Email" autoFocus="true" />
+                      <input className="input" type="email" placeholder="Your Email" />
                     </div>
                   </div>
 
