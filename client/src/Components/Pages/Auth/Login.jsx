@@ -18,21 +18,6 @@ class Login extends Component {
                 <Form>
                   <div className="field">
                     <div className="control">
-                      <div className="help has-text-grey-dark">Username</div>
-                      <Field
-                        field="name"
-                        className={`input ${touched.name && errors.name ? 'is-danger' : ''}`}
-                        name="name"
-                        autoComplete="username"
-                        placeholder="Username"
-                      />
-                      {errors.name && (
-                        <p className="help is-danger">{touched.name && errors.name}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="control">
                       <div className="help has-text-grey-dark">Email</div>
                       <Field
                         field="email"
@@ -66,11 +51,21 @@ class Login extends Component {
                     </div>
                   </div>
                   <button type="submit" className="button is-block is-info is-fullwidth">
-                    Sign Up
+                    Log In
                   </button>
-                  <a href="/" className="help">
-                    Forgot your password?
-                  </a>
+                  <div className="columns">
+                    <div className="column">
+                      <a href="/" className="help">
+                        Create an account
+                      </a>
+                    </div>
+                    <div className="column">
+                      <a href="/" className="help">
+                        Forgot your password?
+                      </a>
+                    </div>
+                  </div>
+
                   {/* TODO: add oauth options ? */}
                 </Form>
               </div>
@@ -92,18 +87,16 @@ const FormikLogin = withFormik({
   },
   validationSchema: Yup.object().shape({
     // TODO: add username limitations (spaces, etc)
-    name: Yup.string()
-      .required()
-      .min(3),
     email: Yup.string()
       .email()
-      .required(),
+      .required()
+      .max(150),
     password: Yup.string()
       .min(6)
       .required()
   }),
   handleSubmit(values, errors) {
-    axios.post('/auth/register', values).then(res => {
+    axios.post('/auth/login', values).then(res => {
       if (res.data.message === 'Login Successful') {
         localStorage.setItem('jwtToken', res.data.access_token);
         //  redirect after success
