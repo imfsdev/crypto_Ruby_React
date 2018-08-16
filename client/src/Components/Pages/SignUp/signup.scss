@@ -1,17 +1,20 @@
 @import '../../../styles/variables.scss';
 .signup {
+  // css for the selected option (signup or login)
   &-buttons {
-    padding-right: 0px;
-    &-signup {
-      // padding-right: 0px;
-      div {
-        border-bottom: 2px solid $primary-color;
-        &:hover {
-          border-bottom: 2px solid darken($color: $primary-color, $amount: 10);
-        }
+    .button {
+      // background-color: green;
+      font-weight: 300; // color: rgba($color: #000000, $alpha: 0.4);
+    }
+  }
+  &-active {
+    .button {
+      font-weight: 500;
+      color: rgba($color: #000000, $alpha: 1);
+      border-bottom: 2px solid $primary-color !important;
+      &:hover {
+        border-bottom: 2px solid darken($color: $primary-color, $amount: 10) !important;
       }
-    } // &-login {
-    // padding-left: 0px;
-    // }
+    }
   }
 }
