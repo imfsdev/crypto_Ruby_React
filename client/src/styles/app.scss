@@ -1,1 +1,10 @@
-@import '../Components/Pages/LogIn/LoginForm/loginform.scss'
+@import '../Components/Pages/LogIn/LoginForm/loginform.scss';
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', sans-serif;
+}
