@@ -25,8 +25,8 @@ class AuthStore {
   };
 
   @action
-  registerUser = userdata => {
-    axios.post('/auth/register');
+  registerUser = userData => {
+    axios.post('/auth/register', userData);
   };
 }
 
