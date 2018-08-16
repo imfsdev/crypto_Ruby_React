@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withFormik } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import Yup from 'yup';
 
 class SignUp extends Component {
@@ -25,12 +25,11 @@ class SignUp extends Component {
         login: true
       });
     }
+
     console.log(this.state);
   };
   render() {
-    const { values } = this.props;
-
-    console.log(values);
+    const { values, handleChange } = this.props;
 
     return (
       <section className="hero signup">
@@ -54,22 +53,43 @@ class SignUp extends Component {
                     </button>
                   </div>
                 </div>
-                <form id="basic-form">
+                <Form>
                   <div className="field">
                     <div className="control">
-                      <input
-                        field="email"
+                      <div className="help has-text-grey-dark">Username</div>
+                      <Field
+                        field="name"
                         className="input"
-                        name="email"
-                        type="email"
-                        // placeholder="Your Email"
-                        value={values.email}
+                        name="name"
+                        autoComplete="username"
+                        placeholder="Your Username"
                       />
                     </div>
                   </div>
                   <div className="field">
                     <div className="control">
-                      <input className="input" type="password" placeholder="Your Password" />
+                      <div className="help has-text-grey-dark">Email</div>
+                      <Field
+                        field="email"
+                        className="input"
+                        placeholder="Your Email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <div className="control">
+                      <div className="help has-text-grey-dark">Password</div>
+                      <Field
+                        field="password"
+                        className="input"
+                        name="password"
+                        type="password"
+                        autoComplete="current-password"
+                        placeholder="Your Password"
+                      />
                     </div>
                   </div>
                   <button type="submit" className="button is-block is-info is-fullwidth">
@@ -79,7 +99,7 @@ class SignUp extends Component {
                     Forgot your password?
                   </a>
                   {/* TODO: add oauth options ? */}
-                </form>
+                </Form>
               </div>
             </div>
           </div>
@@ -92,8 +112,14 @@ class SignUp extends Component {
 const FormikSignUp = withFormik({
   mapPropsToValues() {
     return {
-      email: 'test text'
+      name: '',
+      email: '',
+      password: ''
     };
+  },
+  handleSubmit(values) {
+    // post request goes here
+    console.log(values);
   }
 })(SignUp);
 
