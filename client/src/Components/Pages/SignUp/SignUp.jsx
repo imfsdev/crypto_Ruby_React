@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
 export default class SignUp extends Component {
-  // eslint-disable-next-line
-  toggleForm(e) {
-    console.log(e.target.id);
+  toggleForm = e => {
     const signup = document.getElementById('signup');
     const login = document.getElementById('login');
-    // console.log(signup);
-    signup.classList.add('signup-active');
-  }
+    if (e.target.id === 'signup') {
+      signup.classList.add('signup-active');
+      login.classList.remove('signup-active');
+    } else {
+      login.classList.add('signup-active');
+      signup.classList.remove('signup-active');
+    }
+  };
   render() {
     return (
       <section className="hero signup">
@@ -19,7 +22,7 @@ export default class SignUp extends Component {
                 <div className="columns is-mobile signup-buttons">
                   <div className="column is-half-mobile">
                     <div
-                      tabIndex="-1"
+                      tabIndex="0"
                       onKeyDown={this.toggleForm}
                       role="button"
                       onClick={this.toggleForm}
@@ -31,7 +34,7 @@ export default class SignUp extends Component {
                   </div>
                   <div className="column is-half-mobile">
                     <div
-                      tabIndex="-1"
+                      tabIndex="0"
                       onKeyDown={this.toggleForm}
                       role="button"
                       id="login"
