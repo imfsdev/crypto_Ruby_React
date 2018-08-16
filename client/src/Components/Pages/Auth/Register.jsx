@@ -6,31 +6,7 @@ import axios from 'axios';
 import authStore from '../../../stores/authStore';
 import setAuthToken from '../../../utils/setAuthToken';
 
-@inject('authStore')
-@observer
 class Auth extends Component {
-  state = {
-    auth: 'register'
-  };
-  toggleForm = e => {
-    const register = document.getElementById('register');
-    const login = document.getElementById('login');
-    if (e.target.id === 'register') {
-      register.classList.add('auth-active');
-      login.classList.remove('auth-active');
-      this.setState({
-        auth: 'register'
-      });
-    } else {
-      login.classList.add('auth-active');
-      register.classList.remove('auth-active');
-      this.setState({
-        auth: 'login'
-      });
-    }
-
-    console.log(this.state);
-  };
   render() {
     const { values, errors, touched } = this.props;
     return (
