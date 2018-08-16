@@ -6,7 +6,7 @@ import axios from 'axios';
 import authStore from '../../../stores/authStore';
 import setAuthToken from '../../../utils/setAuthToken';
 
-class Register extends Component {
+class Login extends Component {
   render() {
     const { values, errors, touched } = this.props;
     return (
@@ -82,7 +82,7 @@ class Register extends Component {
   }
 }
 
-const FormikAuth = withFormik({
+const FormikLogin = withFormik({
   mapPropsToValues() {
     return {
       name: '',
@@ -111,8 +111,8 @@ const FormikAuth = withFormik({
       }
     });
   }
-})(Register);
+})(Login);
 
-export default FormikAuth;
+export default FormikLogin;
 
 // TODO: nevber use formik when i want to have conditionally different routes etc
