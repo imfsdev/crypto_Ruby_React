@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withFormik, Form, Field } from 'formik';
-import Yup from 'yup';
+import * as Yup from 'yup';
 
 class SignUp extends Component {
   state = {
@@ -30,7 +30,6 @@ class SignUp extends Component {
   };
   render() {
     const { values, errors } = this.props;
-
     return (
       <section className="hero signup">
         <div className="hero-body">
@@ -59,11 +58,12 @@ class SignUp extends Component {
                       <div className="help has-text-grey-dark">Username</div>
                       <Field
                         field="name"
-                        className="input"
+                        className={`input ${errors.name ? 'is-danger' : ''}`}
                         name="name"
                         autoComplete="username"
                         placeholder="Your Username"
                       />
+                      {errors.name && <p className="help is-danger">This email is invalid</p>}
                     </div>
                   </div>
                   <div className="field">
@@ -71,12 +71,13 @@ class SignUp extends Component {
                       <div className="help has-text-grey-dark">Email</div>
                       <Field
                         field="email"
-                        className="input"
+                        className={`input ${errors.email ? 'is-danger' : ''}`}
                         placeholder="Your Email"
                         name="email"
                         type="email"
                         autoComplete="email"
                       />
+                      <p className="help is-danger">This email is invalid</p>
                     </div>
                   </div>
                   <div className="field">
@@ -84,12 +85,13 @@ class SignUp extends Component {
                       <div className="help has-text-grey-dark">Password</div>
                       <Field
                         field="password"
-                        className="input"
+                        className={`input ${errors.password ? 'is-danger' : ''}`}
                         name="password"
                         type="password"
                         autoComplete="current-password"
                         placeholder="Your Password"
                       />
+                      <p className="help is-danger">This email is invalid</p>
                     </div>
                   </div>
                   <button type="submit" className="button is-block is-info is-fullwidth">
@@ -128,9 +130,9 @@ const FormikSignUp = withFormik({
       .min(6)
       .required()
   }),
-  handleSubmit(values) {
+  handleSubmit(values, errors) {
     // post request goes here
-    console.log(values);
+    console.log(errors);
   }
 })(SignUp);
 
