@@ -23,6 +23,11 @@ class AuthStore {
         console.log(err);
       });
   };
+
+  @action
+  registerUser = userdata => {
+    axios.post('/auth/register');
+  };
 }
 
 export default new AuthStore();

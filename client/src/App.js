@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Components/Pages/Home/Home';
-import SignUp from './Components/Pages/SignUp/SignUp';
-import LogIn from './Components/Pages/LogIn/LogIn';
+import Auth from './Components/Pages/Auth/Auth';
 
 import '../src/styles/app.scss';
 // TODO: make it so the user redirects to their profile if they are logged in (can't go to login)
@@ -12,8 +11,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/signup" exact component={SignUp} />
-          <Route path="/login" exact component={LogIn} />
+          <Route path="/login" exact component={Auth} />
         </Switch>
       </BrowserRouter>
     );

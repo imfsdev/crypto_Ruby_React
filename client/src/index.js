@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import App from './App';
-import authStore from './stores/AuthStore';
+import authStore from './stores/authStore';
 
 //  no serviceworker because it can interfere with ruby sometimes
 const Root = (
