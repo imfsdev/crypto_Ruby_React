@@ -10,8 +10,7 @@ import setAuthToken from '../../../utils/setAuthToken';
 @observer
 class Auth extends Component {
   state = {
-    register: true,
-    login: false
+    auth: 'register'
   };
   toggleForm = e => {
     const register = document.getElementById('register');
@@ -20,15 +19,13 @@ class Auth extends Component {
       register.classList.add('auth-active');
       login.classList.remove('auth-active');
       this.setState({
-        register: true,
-        login: false
+        auth: 'register'
       });
     } else {
       login.classList.add('auth-active');
       register.classList.remove('auth-active');
       this.setState({
-        register: false,
-        login: true
+        auth: 'login'
       });
     }
 
@@ -42,22 +39,6 @@ class Auth extends Component {
           <div className="container has-text-centered">
             <div className="column is-4 is-offset-4">
               <div className="box">
-                <div className="columns is-mobile auth-buttons">
-                  <div className="column is-half-mobile">
-                    <button
-                      onClick={this.toggleForm}
-                      id="register"
-                      className="button is-fullwidth auth-active"
-                    >
-                      Sign Up
-                    </button>
-                  </div>
-                  <div className="column is-half-mobile">
-                    <button id="login" onClick={this.toggleForm} className="button is-fullwidth">
-                      Log in
-                    </button>
-                  </div>
-                </div>
                 <Form>
                   <div className="field">
                     <div className="control">
@@ -145,6 +126,7 @@ const FormikAuth = withFormik({
       .required()
   }),
   handleSubmit(values, errors) {
+    console.log(values);
     axios.post('/auth/register', values).then(res => {
       if (res.data.message === 'Login Successful') {
         localStorage.setItem('jwtToken', res.data.access_token);
