@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
-import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { withFormik, Form, Field } from 'formik';
+import { inject, observer } from 'mobx-react';
+import authStore from '../../../stores/authStore';
 
-class SignUp extends Component {
+@inject('authStore')
+@observer
+class Auth extends Component {
   state = {
-    signup: true,
+    register: true,
     login: false
   };
   toggleForm = e => {
-    const signup = document.getElementById('signup');
+    const register = document.getElementById('register');
     const login = document.getElementById('login');
-    if (e.target.id === 'signup') {
-      signup.classList.add('signup-active');
-      login.classList.remove('signup-active');
+    if (e.target.id === 'register') {
+      register.classList.add('register-active');
+      login.classList.remove('register-active');
       this.setState({
-        signup: true,
+        register: true,
         login: false
       });
     } else {
-      login.classList.add('signup-active');
-      signup.classList.remove('signup-active');
+      login.classList.add('register-active');
+      register.classList.remove('register-active');
       this.setState({
-        signup: false,
+        register: false,
         login: true
       });
     }
@@ -31,17 +35,17 @@ class SignUp extends Component {
   render() {
     const { values, errors } = this.props;
     return (
-      <section className="hero signup">
+      <section className="hero auth">
         <div className="hero-body">
           <div className="container has-text-centered">
             <div className="column is-4 is-offset-4">
               <div className="box">
-                <div className="columns is-mobile signup-buttons">
+                <div className="columns is-mobile auth-buttons">
                   <div className="column is-half-mobile">
                     <button
                       onClick={this.toggleForm}
-                      id="signup"
-                      className="button is-fullwidth signup-active"
+                      id="register"
+                      className="button is-fullwidth auth-active"
                     >
                       Sign Up
                     </button>
@@ -111,7 +115,7 @@ class SignUp extends Component {
   }
 }
 
-const FormikSignUp = withFormik({
+const FormikAuth = withFormik({
   mapPropsToValues() {
     return {
       name: '',
@@ -132,8 +136,8 @@ const FormikSignUp = withFormik({
   }),
   handleSubmit(values, errors) {
     // post request goes here
-    console.log(errors);
+    if (this.state.register) this.props.authStore.register();
   }
-})(SignUp);
+})(Auth);
 
-export default FormikSignUp;
+export default FormikAuth;
