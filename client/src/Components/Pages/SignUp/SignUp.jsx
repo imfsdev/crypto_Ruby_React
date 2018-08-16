@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 export default class SignUp extends Component {
+  // eslint-disable-next-line
+  toggleForm(e) {
+    console.log(e.target.id);
+    const signup = document.getElementById('signup');
+    const login = document.getElementById('login');
+    // console.log(signup);
+    signup.classList.add('signup-active');
+  }
   render() {
     return (
       <section className="hero signup">
@@ -9,11 +17,29 @@ export default class SignUp extends Component {
             <div className="column is-4 is-offset-4">
               <div className="box">
                 <div className="columns is-mobile signup-buttons">
-                  <div className="column is-half-mobile signup-active">
-                    <div className="button is-fullwidth">Sign Up</div>
+                  <div className="column is-half-mobile">
+                    <div
+                      tabIndex="-1"
+                      onKeyDown={this.toggleForm}
+                      role="button"
+                      onClick={this.toggleForm}
+                      id="signup"
+                      className="button is-fullwidth signup-active"
+                    >
+                      Sign Up
+                    </div>
                   </div>
                   <div className="column is-half-mobile">
-                    <div className="button is-fullwidth">Log in</div>
+                    <div
+                      tabIndex="-1"
+                      onKeyDown={this.toggleForm}
+                      role="button"
+                      id="login"
+                      onClick={this.toggleForm}
+                      className="button is-fullwidth"
+                    >
+                      Log in
+                    </div>
                   </div>
                 </div>
                 <form>
