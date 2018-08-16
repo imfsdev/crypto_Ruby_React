@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import { inject, observer } from 'mobx-react';
+import axios from 'axios';
 import authStore from '../../../stores/authStore';
+import setAuthToken from '../../../utils/setAuthToken';
 
 @inject('authStore')
 @observer
@@ -15,15 +17,15 @@ class Auth extends Component {
     const register = document.getElementById('register');
     const login = document.getElementById('login');
     if (e.target.id === 'register') {
-      register.classList.add('register-active');
-      login.classList.remove('register-active');
+      register.classList.add('auth-active');
+      login.classList.remove('auth-active');
       this.setState({
         register: true,
         login: false
       });
     } else {
-      login.classList.add('register-active');
-      register.classList.remove('register-active');
+      login.classList.add('auth-active');
+      register.classList.remove('auth-active');
       this.setState({
         register: false,
         login: true
@@ -65,7 +67,7 @@ class Auth extends Component {
                         className={`input ${touched.name && errors.name ? 'is-danger' : ''}`}
                         name="name"
                         autoComplete="username"
-                        placeholder="Your Username"
+                        placeholder="Username"
                       />
                       {errors.name && (
                         <p className="help is-danger">{touched.name && errors.name}</p>
@@ -78,7 +80,7 @@ class Auth extends Component {
                       <Field
                         field="email"
                         className={`input ${touched.email && errors.email ? 'is-danger' : ''}`}
-                        placeholder="Your Email"
+                        placeholder="Email"
                         name="email"
                         type="email"
                         autoComplete="email"
@@ -99,7 +101,7 @@ class Auth extends Component {
                         name="password"
                         type="password"
                         autoComplete="current-password"
-                        placeholder="Your Password"
+                        placeholder="Password"
                       />
                       {errors.password && (
                         <p className="help is-danger">{touched.password && errors.password}</p>
@@ -143,8 +145,13 @@ const FormikAuth = withFormik({
       .required()
   }),
   handleSubmit(values, errors) {
-    // post request goes here
-    if (this.state.register) this.props.authStore.register();
+    axios.post('/auth/register', values).then(res => {
+      if (res.data.message === 'Login Successful') {
+        localStorage.setItem('jwtToken', res.data.access_token);
+        //  redirect after success
+        // set a flash message after success(?)
+      }
+    });
   }
 })(Auth);
 
