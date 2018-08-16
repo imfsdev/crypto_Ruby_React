@@ -1,5 +1,5 @@
 @import '../../../styles/variables.scss';
-.signup {
+.auth {
   transition: 4s ease;
   .button {
     transition: 0.2s ease;
@@ -13,18 +13,6 @@
       transition: 0.2s ease;
       border-bottom: 2px solid darken($color: $primary-color, $amount: 10) !important;
     }
-  }
-}
-
-.help.is-danger {
-  transition: 0.35s ease-in;
-  height: 0px;
-  animation: fadeErrorHelp 0.2s forwards;
-}
-
-@keyframes fadeErrorHelp {
-  100% {
-    height: 19px;
   }
 }
 
