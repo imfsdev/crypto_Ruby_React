@@ -63,7 +63,7 @@ class SignUp extends Component {
                         autoComplete="username"
                         placeholder="Your Username"
                       />
-                      {errors.name && <p className="help is-danger">This email is invalid</p>}
+                      {errors.name && <p className="help is-danger">{errors.name}</p>}
                     </div>
                   </div>
                   <div className="field">
@@ -77,7 +77,7 @@ class SignUp extends Component {
                         type="email"
                         autoComplete="email"
                       />
-                      <p className="help is-danger">This email is invalid</p>
+                      {errors.email && <p className="help is-danger">{errors.email}</p>}
                     </div>
                   </div>
                   <div className="field">
@@ -91,7 +91,7 @@ class SignUp extends Component {
                         autoComplete="current-password"
                         placeholder="Your Password"
                       />
-                      <p className="help is-danger">This email is invalid</p>
+                      {errors.password && <p className="help is-danger">{errors.password}</p>}
                     </div>
                   </div>
                   <button type="submit" className="button is-block is-info is-fullwidth">
