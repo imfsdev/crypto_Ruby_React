@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 
 export default class SignUp extends Component {
+  state = {
+    signup: true,
+    login: false
+  };
   toggleForm = e => {
     const signup = document.getElementById('signup');
     const login = document.getElementById('login');
     if (e.target.id === 'signup') {
       signup.classList.add('signup-active');
       login.classList.remove('signup-active');
+      this.setState({
+        signup: true,
+        login: false
+      });
     } else {
       login.classList.add('signup-active');
       signup.classList.remove('signup-active');
+      this.setState({
+        signup: false,
+        login: true
+      });
     }
+    console.log(this.state);
   };
   render() {
     return (

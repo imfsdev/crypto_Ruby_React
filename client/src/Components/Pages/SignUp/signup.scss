@@ -7,6 +7,7 @@
   &-active {
     font-weight: 600 !important;
     border-bottom: 2px solid $primary-color !important;
+    color: rgba($color: #363636, $alpha: 1) !important;
     &:hover {
       transition: 0.2s ease;
       border-bottom: 2px solid darken($color: $primary-color, $amount: 10) !important;
