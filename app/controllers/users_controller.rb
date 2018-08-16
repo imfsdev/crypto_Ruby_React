@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   def register
     @user = User.create(user_params)
     if @user.save
-      response = { message: "User created successfully" }
-      render json: response, status: :created
+      #  if the user is saved attempt to log in with that user
+      authenticate(user_params["email"], user_params["password"])
     else
       render json: @user.errors, status: :bad
     end
