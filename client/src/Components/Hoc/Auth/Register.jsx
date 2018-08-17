@@ -103,9 +103,11 @@ const FormikAuth = withFormik({
     // TODO: add username limitations (spaces, etc)
     name: Yup.string()
       .required()
-      .min(3),
+      .min(3)
+      .max(20),
     email: Yup.string()
       .email()
+      .max(160)
       .required(),
     password: Yup.string()
       .min(6)
@@ -124,10 +126,14 @@ const FormikAuth = withFormik({
         }
       })
       .catch(err => {
-        const submitErrors = err.response.data.errors;
-        //  set up error messages for
-        console.log(submitErrors);
-        setErrors({ name: submitErrors.name[0] });
+        // destructures the errors from back end
+        const { name, email, password } = err.response.data.errors;
+        //  destructures the errors into errors to display after submit
+        setErrors({
+          name,
+          email,
+          password
+        });
       });
   }
 })(Register);
