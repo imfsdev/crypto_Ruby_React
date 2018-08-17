@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as Yup from 'yup';
-import { withFormik, Form, Field } from 'formik';
+import { withFormik, Form, Field, resetForm, setErrors, setSubmitting } from 'formik';
 import { inject, observer } from 'mobx-react';
 import axios from 'axios';
 import authStore from '../../../stores/authStore';
@@ -111,7 +111,8 @@ const FormikAuth = withFormik({
       .min(6)
       .required()
   }),
-  handleSubmit(values, errors) {
+  // eslint-disable-next-line
+  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     axios
       .post('/auth/register', values)
       .then(res => {
@@ -126,6 +127,7 @@ const FormikAuth = withFormik({
         const submitErrors = err.response.data.errors;
         //  set up error messages for
         console.log(submitErrors);
+        setErrors({ name: `Username ${submitErrors.name}` });
       });
   }
 })(Register);
