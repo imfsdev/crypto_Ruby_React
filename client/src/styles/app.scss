@@ -1,4 +1,5 @@
 @import '../Components/Hoc/Auth/auth.scss';
+@import '../Components/Hoc/Modal/modal.scss';
 @import '../Components/Hoc/Navbar/navbar.scss';
 @import './variables.scss';
 html {
@@ -27,3 +28,11 @@ input[type="reset"] {
     outline: 5px auto -webkit-focus-ring-color;
   }
 }
+
+// .modal {
+  //   height: 1000px;
+  //   width: 1000px;
+  //   position: absolute;
+  //   background: red;
+  //   z-index: 99999;
+  // }
