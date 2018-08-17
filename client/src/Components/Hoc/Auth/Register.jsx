@@ -116,16 +116,15 @@ const FormikAuth = withFormik({
       .post('/auth/register', values)
       .then(res => {
         console.log(res);
-        if (res.data.message === 'Login Successful') {
-          resetForm();
-          localStorage.setItem('jwtToken', res.data.access_token);
-          //  redirect after success
-          // set a flash message after success(?)
-        }
+        resetForm();
+        localStorage.setItem('jwtToken', res.data.access_token);
         setSubmitting(false);
+        //  redirect after success
+        // set a flash message after success(?)
       })
       .catch(err => {
         // destructures the errors from back end
+        setSubmitting(false);
         const { name, email, password } = err.response.data.errors;
         //  destructures the errors into errors to display after submit
         setErrors({
