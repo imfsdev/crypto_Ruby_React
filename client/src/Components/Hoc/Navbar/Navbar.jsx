@@ -22,6 +22,11 @@ class Navbar extends Component {
     dropMenu.classList.toggle('is-active');
     burgerIcon.classList.toggle('is-active');
   };
+  toggleDropdown = e => {
+    const dropdown = e.target.parentNode;
+    e.stopPropagation();
+    dropdown.classList.toggle('is-active');
+  };
 
   render() {
     const { authStore } = this.props;
@@ -57,7 +62,7 @@ class Navbar extends Component {
               <a className="navbar-item" href="https://bulma.io/">
                 Home
               </a>
-              <div className="navbar-item has-dropdown is-hoverable">
+              <div className="navbar-item has-dropdown">
                 <a className="navbar-link" href="/documentation/overview/start/">
                   Docs
                 </a>
@@ -100,13 +105,20 @@ class Navbar extends Component {
               {!authStore.user.user_id ? (
                 <ReactAux>
                   <div className="desktop-auth">
-                    <div className="navbar-item has-dropdown is-hoverable">
+                    {/* eslint-disable-next-line */}
+                    <div onClick={this.toggleDropdown} className="navbar-item has-dropdown">
                       <a className="navbar-link">Sign Up</a>
                       <div className="navbar-dropdown is-boxed is-right">
                         <Register />
                       </div>
                     </div>
-                    <div className="navbar-item has-dropdown is-hoverable">
+                    <div
+                      onClick={this.toggleDropdown}
+                      onKeyDown={this.toggleDropdown}
+                      role="button"
+                      tabIndex="0"
+                      className="navbar-item has-dropdown "
+                    >
                       <a className="navbar-link">Log In</a>
                       <div className="navbar-dropdown is-boxed is-right">
                         <Login />
@@ -123,10 +135,16 @@ class Navbar extends Component {
                   </div>
                 </ReactAux>
               ) : (
-                <div className="navbar-item">
-                  User ID:
-                  {authStore.user.user_id}
-                </div>
+                <ReactAux>
+                  <div className="navbar-item">
+                    <p> Your Account</p>
+                    User ID:
+                    {authStore.user.user_id}
+                  </div>
+                  <div className="navbar-item">
+                    <p>Logout</p>
+                  </div>
+                </ReactAux>
               )}
             </div>
           </div>
