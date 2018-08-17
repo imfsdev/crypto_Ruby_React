@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Register from '../Auth/Register';
-import Login from '../Auth/Login';
-import Navbar from '../../Hoc/Navbar';
+import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
 
 class Home extends Component {
@@ -11,8 +9,6 @@ class Home extends Component {
         <Navbar />
         <h1>Home!</h1>
         <a href="/login">signup</a>
-        <Register />
-        <Login />
       </ReactAux>
     );
   }
