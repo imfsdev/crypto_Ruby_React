@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
-import { withFormik, Form, Field, setErrors, setSubmitting } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import { inject, observer } from 'mobx-react';
 import authStore from '../../../stores/authStore';
 
@@ -12,7 +12,7 @@ import authStore from '../../../stores/authStore';
 class Register extends Component {
   render() {
     // eslint-disable-next-line
-    const { errors, touched, isSubmitting, authStore } = this.props;
+    const { errors, touched, isSubmitting } = this.props;
     return (
       <section className="auth">
         <div className="has-text-centered">
@@ -116,7 +116,6 @@ const FormikAuth = withFormik({
       .min(6)
       .required()
   }),
-  // eslint-disable-next-line
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     axios
       .post('/auth/register', values)
