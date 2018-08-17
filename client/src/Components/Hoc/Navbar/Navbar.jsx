@@ -40,6 +40,7 @@ class Navbar extends Component {
 
   render() {
     const { authStore } = this.props;
+    console.log(authStore.user);
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}
@@ -119,9 +120,9 @@ class Navbar extends Component {
                       User ID:
                       {authStore.user.user_id}
                     </div>
-                    <div className="navbar-item">
-                      <p>Logout</p>
-                    </div>
+                    <button onClick={authStore.logoutUser} className="navbar-item">
+                      <span>Logout</span>
+                    </button>
                   </ReactAux>
                 )}
               </div>
