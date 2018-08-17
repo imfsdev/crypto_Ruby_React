@@ -12,30 +12,52 @@ class Navbar extends Component {
   state = {
     // eslint-disable-next-line
     modal: false,
-    modalTarget: ''
   };
 
-  closeDropdowns = e => {
-    const modalTarget = document.getElementById(this.state.modalTarget);
-    modalTarget.classList.remove('is-active');
-    this.setState({ modal: false, modalTarget: '' });
-  };
-
-  // toggle navbar
+  // toggle navbar burger menu open/close
   toggleBurger = () => {
     const burgerIcon = document.getElementById('burger');
     const dropMenu = document.getElementById('navMenu');
     dropMenu.classList.toggle('is-active');
     burgerIcon.classList.toggle('is-active');
   };
-  toggleDropdown = e => {
+
+  // Toggles a dropdown
+  toggleSignUpDropdown = e => {
     e.stopPropagation();
+    // get the clicked element's parent (this is what needs the class)
     const dropdown = e.target.parentNode;
-    this.setState({
-      modal: true,
-      modalTarget: e.target.parentNode.id
-    });
     dropdown.classList.toggle('is-active');
+    // set state for modal to open so it opens
+    //  and set the parentNode.id to be the modal target (eg: signup)
+    this.setState({
+      modal: true
+    });
+    const login = document.getElementById('login');
+    login.classList.remove('is-active');
+  };
+
+  toggleLoginDropdown = e => {
+    e.stopPropagation();
+    // get the clicked element's parent (this is what needs the class)
+    const dropdown = e.target.parentNode;
+    dropdown.classList.toggle('is-active');
+    // set state for modal to open so it opens
+    //  and set the parentNode.id to be the modal target (eg: signup)
+    this.setState({
+      modal: true
+    });
+    const signup = document.getElementById('signup');
+    signup.classList.remove('is-active');
+  };
+
+  // for the modal, closes both dropdowns on click
+  closeDropdowns = () => {
+    const signup = document.getElementById('signup');
+    const login = document.getElementById('login');
+    signup.classList.remove('is-active');
+    login.classList.remove('is-active');
+    this.setState({ modal: false });
   };
 
   render() {
@@ -79,7 +101,7 @@ class Navbar extends Component {
                   <ReactAux>
                     <div className="desktop-auth">
                       <div id="signup" className="navbar-item has-dropdown">
-                        <button onClick={this.toggleDropdown} className="navbar-item">
+                        <button onClick={this.toggleSignUpDropdown} className="navbar-item">
                           Sign Up
                         </button>
                         <div className="navbar-dropdown is-boxed is-right">
@@ -87,7 +109,7 @@ class Navbar extends Component {
                         </div>
                       </div>
                       <div id="login" className="navbar-item has-dropdown ">
-                        <button onClick={this.toggleDropdown} className="navbar-item">
+                        <button onClick={this.toggleLoginDropdown} className="navbar-item">
                           Log In
                         </button>
                         <div className="navbar-dropdown is-boxed is-right">
