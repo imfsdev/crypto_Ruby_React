@@ -12,9 +12,8 @@ class UsersController < ApplicationController
       authenticate(user_params["email"], user_params["password"])
     else
       render json: {
-        status: 500,
         errors: @user.errors
-      }.to_json, status: 500
+      }.to_json, status: :bad
     end
   end
 
