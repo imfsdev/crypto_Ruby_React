@@ -11,53 +11,31 @@ import Register from '../Auth/Register';
 class Navbar extends Component {
   state = {
     // eslint-disable-next-line
+    burgerOpen: false,
     modal: false,
+    dropdown: ''
   };
 
   // toggle navbar burger menu open/close
   toggleBurger = () => {
-    const burgerIcon = document.getElementById('burger');
-    const dropMenu = document.getElementById('navMenu');
-    dropMenu.classList.toggle('is-active');
-    burgerIcon.classList.toggle('is-active');
+    this.setState(prevState => ({
+      burgerOpen: !prevState.burgerOpen
+    }));
   };
 
-  // Toggles a dropdown
-  toggleSignUpDropdown = e => {
+  toggleDropdown = e => {
     e.stopPropagation();
-    // get the clicked element's parent (this is what needs the class)
-    const dropdown = e.target.parentNode;
-    dropdown.classList.toggle('is-active');
-    // set state for modal to open so it opens
-    //  and set the parentNode.id to be the modal target (eg: signup)
     this.setState({
-      modal: true
+      modal: true,
+      dropdown: e.target.id
     });
-    const login = document.getElementById('login');
-    login.classList.remove('is-active');
   };
 
-  toggleLoginDropdown = e => {
-    e.stopPropagation();
-    // get the clicked element's parent (this is what needs the class)
-    const dropdown = e.target.parentNode;
-    dropdown.classList.toggle('is-active');
-    // set state for modal to open so it opens
-    //  and set the parentNode.id to be the modal target (eg: signup)
-    this.setState({
-      modal: true
-    });
-    const signup = document.getElementById('signup');
-    signup.classList.remove('is-active');
-  };
-
-  // for the modal, closes both dropdowns on click
   closeDropdowns = () => {
-    const signup = document.getElementById('signup');
-    const login = document.getElementById('login');
-    signup.classList.remove('is-active');
-    login.classList.remove('is-active');
-    this.setState({ modal: false });
+    this.setState({
+      modal: false,
+      dropdown: ''
+    });
   };
 
   render() {
@@ -80,7 +58,7 @@ class Navbar extends Component {
                 onClick={this.toggleBurger}
                 onKeyDown={this.toggleBurger}
                 id="burger"
-                className="navbar-burger burger"
+                className={`navbar-burger burger ${this.state.burgerOpen ? 'is-active' : ''}`}
                 tabIndex="0"
                 role="menu"
               >
@@ -90,7 +68,7 @@ class Navbar extends Component {
               </span>
             </div>
 
-            <div id="navMenu" className="navbar-menu">
+            <div className={`navbar-menu${this.state.burgerOpen ? 'is-active' : ''}`}>
               <div className="navbar-start">
                 <a className="navbar-item" href="https://bulma.io/">
                   Home
@@ -100,16 +78,24 @@ class Navbar extends Component {
                 {!authStore.user.user_id ? (
                   <ReactAux>
                     <div className="desktop-auth">
-                      <div id="signup" className="navbar-item has-dropdown">
-                        <button onClick={this.toggleSignUpDropdown} className="navbar-item">
+                      <div
+                        className={`navbar-item has-dropdown ${
+                          this.state.dropdown === 'signup' ? 'is-active' : ''
+                        }`}
+                      >
+                        <button id="signup" onClick={this.toggleDropdown} className="navbar-item">
                           Sign Up
                         </button>
                         <div className="navbar-dropdown is-boxed is-right">
                           <Register />
                         </div>
                       </div>
-                      <div id="login" className="navbar-item has-dropdown ">
-                        <button onClick={this.toggleLoginDropdown} className="navbar-item">
+                      <div
+                        className={`navbar-item has-dropdown ${
+                          this.state.dropdown === 'login' ? 'is-active' : ''
+                        }`}
+                      >
+                        <button id="login" onClick={this.toggleDropdown} className="navbar-item">
                           Log In
                         </button>
                         <div className="navbar-dropdown is-boxed is-right">
