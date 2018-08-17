@@ -8,7 +8,7 @@ import setAuthToken from '../../../utils/setAuthToken';
 
 class Register extends Component {
   render() {
-    const { values, errors, touched } = this.props;
+    const { values, errors, touched, isSubmitting } = this.props;
     return (
       <section className="auth">
         <div className="">
@@ -65,7 +65,12 @@ class Register extends Component {
                       )}
                     </div>
                   </div>
-                  <button type="submit" className="button is-block is-info is-fullwidth">
+                  <button
+                    type="submit"
+                    className={`button is-block is-info is-fullwidth ${
+                      isSubmitting ? 'is-loading' : ''
+                    }`}
+                  >
                     Sign Up
                   </button>
                   <div className="columns">
@@ -120,10 +125,12 @@ const FormikAuth = withFormik({
       .then(res => {
         console.log(res);
         if (res.data.message === 'Login Successful') {
+          resetForm();
           localStorage.setItem('jwtToken', res.data.access_token);
           //  redirect after success
           // set a flash message after success(?)
         }
+        setSubmitting(false);
       })
       .catch(err => {
         // destructures the errors from back end
@@ -139,5 +146,3 @@ const FormikAuth = withFormik({
 })(Register);
 
 export default FormikAuth;
-
-// TODO: nevber use formik when i want to have conditionally different routes etc
