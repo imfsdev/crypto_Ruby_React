@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import * as Yup from 'yup';
-import { withFormik, Form, Field, setErrors, setSubmitting } from 'formik';
-import { inject, observer } from 'mobx-react';
+import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
+import { withFormik, Form, Field, setErrors, setSubmitting } from 'formik';
+import { inject, observer } from 'mobx-react';
+import authStore from '../../../stores/authStore';
+
+@inject('authStore')
+@observer
 class Register extends Component {
   render() {
-    const { errors, touched, isSubmitting } = this.props;
+    // eslint-disable-next-line
+    const { errors, touched, isSubmitting, authStore } = this.props;
     return (
       <section className="auth">
         <div className="has-text-centered">
@@ -118,7 +124,9 @@ const FormikAuth = withFormik({
         console.log(res);
         resetForm();
         localStorage.setItem('jwtToken', res.data.access_token);
+        const decoded = jwtDecode(res.data.access_token);
         setSubmitting(false);
+        authStore.setUser(decoded);
         //  redirect after success
         // set a flash message after success(?)
       })
