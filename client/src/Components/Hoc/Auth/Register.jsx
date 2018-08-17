@@ -112,13 +112,21 @@ const FormikAuth = withFormik({
       .required()
   }),
   handleSubmit(values, errors) {
-    axios.post('/auth/register', values).then(res => {
-      if (res.data.message === 'Login Successful') {
-        localStorage.setItem('jwtToken', res.data.access_token);
-        //  redirect after success
-        // set a flash message after success(?)
-      }
-    });
+    axios
+      .post('/auth/register', values)
+      .then(res => {
+        console.log(res);
+        if (res.data.message === 'Login Successful') {
+          localStorage.setItem('jwtToken', res.data.access_token);
+          //  redirect after success
+          // set a flash message after success(?)
+        }
+      })
+      .catch(err => {
+        const submitErrors = err.response.data.errors;
+        //  set up error messages for
+        console.log(submitErrors);
+      });
   }
 })(Register);
 

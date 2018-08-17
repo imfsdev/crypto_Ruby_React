@@ -11,7 +11,10 @@ class UsersController < ApplicationController
       #  if the user is saved attempt to log in with that user
       authenticate(user_params["email"], user_params["password"])
     else
-      render json: @user.errors, status: :bad
+      render json: {
+        status: 500,
+        errors: @user.errors
+      }.to_json, status: 500
     end
   end
 
