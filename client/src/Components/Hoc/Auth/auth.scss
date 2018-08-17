@@ -1,3 +1,8 @@
+.auth {
+  // TODO: make this work responsively
+  width: 350px;
+}
+
 .input.is-danger {
   transition: 0.4s ease;
   animation: fadeErrorBorder 0.4s forwards;

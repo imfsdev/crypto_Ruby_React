@@ -6,16 +6,31 @@ import axios from 'axios';
 import authStore from '../../../stores/authStore';
 import setAuthToken from '../../../utils/setAuthToken';
 
-class Login extends Component {
+class Register extends Component {
   render() {
     const { values, errors, touched } = this.props;
     return (
-      <section className="hero auth">
-        <div className="hero-body">
-          <div className="container has-text-centered">
-            <div className="column is-4 is-offset-4">
-              <div className="box">
+      <section className="auth">
+        <div className="">
+          <div className="has-text-centered">
+            <div className="column">
+              <div className="">
                 <Form>
+                  <div className="field">
+                    <div className="control">
+                      <div className="help has-text-grey-dark">Username</div>
+                      <Field
+                        field="name"
+                        className={`input ${touched.name && errors.name ? 'is-danger' : ''}`}
+                        name="name"
+                        autoComplete="username"
+                        placeholder="Username"
+                      />
+                      {errors.name && (
+                        <p className="help is-danger">{touched.name && errors.name}</p>
+                      )}
+                    </div>
+                  </div>
                   <div className="field">
                     <div className="control">
                       <div className="help has-text-grey-dark">Email</div>
@@ -51,12 +66,12 @@ class Login extends Component {
                     </div>
                   </div>
                   <button type="submit" className="button is-block is-info is-fullwidth">
-                    Log In
+                    Sign Up
                   </button>
                   <div className="columns">
                     <div className="column">
                       <a href="/" className="help">
-                        Create an account
+                        Already have an account?
                       </a>
                     </div>
                     <div className="column">
@@ -65,7 +80,6 @@ class Login extends Component {
                       </a>
                     </div>
                   </div>
-
                   {/* TODO: add oauth options ? */}
                 </Form>
               </div>
@@ -77,7 +91,7 @@ class Login extends Component {
   }
 }
 
-const FormikLogin = withFormik({
+const FormikAuth = withFormik({
   mapPropsToValues() {
     return {
       name: '',
@@ -87,16 +101,18 @@ const FormikLogin = withFormik({
   },
   validationSchema: Yup.object().shape({
     // TODO: add username limitations (spaces, etc)
+    name: Yup.string()
+      .required()
+      .min(3),
     email: Yup.string()
       .email()
-      .required()
-      .max(150),
+      .required(),
     password: Yup.string()
       .min(6)
       .required()
   }),
   handleSubmit(values, errors) {
-    axios.post('/auth/login', values).then(res => {
+    axios.post('/auth/register', values).then(res => {
       if (res.data.message === 'Login Successful') {
         localStorage.setItem('jwtToken', res.data.access_token);
         //  redirect after success
@@ -104,8 +120,8 @@ const FormikLogin = withFormik({
       }
     });
   }
-})(Login);
+})(Register);
 
-export default FormikLogin;
+export default FormikAuth;
 
 // TODO: nevber use formik when i want to have conditionally different routes etc
