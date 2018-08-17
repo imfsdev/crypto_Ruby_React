@@ -47,7 +47,6 @@ class UsersController < ApplicationController
            message: "Login Successful"
          }
        else
-
          if @user = User.find_by_email(email)
            render json: { password: "Incorrect password" }, status: :unauthorized
          else

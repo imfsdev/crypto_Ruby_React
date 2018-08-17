@@ -1,75 +1,77 @@
 import React, { Component } from 'react';
 import * as Yup from 'yup';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
+
 import { withFormik, Form, Field } from 'formik';
 import { inject, observer } from 'mobx-react';
-import axios from 'axios';
 import authStore from '../../../stores/authStore';
-import setAuthToken from '../../../utils/setAuthToken';
 
+@inject('authStore')
+@observer
 class Login extends Component {
   render() {
-    const { values, errors, touched } = this.props;
+    // eslint-disable-next-line
+    const { errors, touched, isSubmitting } = this.props;
     return (
       <section className="auth">
-        <div className="">
-          <div className="has-text-centered">
-            <div className="column">
-              <div className="">
-                <Form>
-                  <div className="field">
-                    <div className="control">
-                      <div className="help has-text-grey-dark">Email</div>
-                      <Field
-                        field="email"
-                        className={`input ${touched.email && errors.email ? 'is-danger' : ''}`}
-                        placeholder="Email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                      />
-                      {errors.email && (
-                        <p className="help is-danger">{touched.email && errors.email}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="control">
-                      <div className="help has-text-grey-dark">Password</div>
-                      <Field
-                        field="password"
-                        className={`input ${
-                          touched.password && errors.password ? 'is-danger' : ''
-                        }`}
-                        name="password"
-                        type="password"
-                        autoComplete="current-password"
-                        placeholder="Password"
-                      />
-                      {errors.password && (
-                        <p className="help is-danger">{touched.password && errors.password}</p>
-                      )}
-                    </div>
-                  </div>
-                  <button type="submit" className="button is-block is-info is-fullwidth">
-                    Log In
-                  </button>
-                  <div className="columns">
-                    <div className="column">
-                      <a href="/" className="help">
-                        Create an account
-                      </a>
-                    </div>
-                    <div className="column">
-                      <a href="/" className="help">
-                        Forgot your password?
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* TODO: add oauth options ? */}
-                </Form>
+        <div className="has-text-centered">
+          <div className="column">
+            <Form>
+              <div className="field">
+                <div className="control">
+                  <div className="help has-text-grey-dark">Email</div>
+                  <Field
+                    field="email"
+                    className={`input ${touched.email && errors.email ? 'is-danger' : ''}`}
+                    placeholder="Email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                  />
+                  {errors.email && (
+                    <p className="help is-danger">{touched.email && errors.email}</p>
+                  )}
+                </div>
               </div>
-            </div>
+              <div className="field">
+                <div className="control">
+                  <div className="help has-text-grey-dark">Password</div>
+                  <Field
+                    field="password"
+                    className={`input ${touched.password && errors.password ? 'is-danger' : ''}`}
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    placeholder="Password"
+                  />
+                  {errors.password && (
+                    <p className="help is-danger">{touched.password && errors.password}</p>
+                  )}
+                </div>
+              </div>
+              <button
+                type="submit"
+                className={`button is-block is-info is-fullwidth ${
+                  isSubmitting ? 'is-loading' : ''
+                }`}
+              >
+                Log In
+              </button>
+              <div className="columns">
+                <div className="column">
+                  <a href="/" className="help">
+                    Already have an account?
+                  </a>
+                </div>
+                <div className="column">
+                  <a href="/" className="help">
+                    Forgot your password?
+                  </a>
+                </div>
+              </div>
+              {/* TODO: add oauth options ? */}
+            </Form>
           </div>
         </div>
       </section>
@@ -77,35 +79,50 @@ class Login extends Component {
   }
 }
 
-const FormikLogin = withFormik({
+const FormikAuth = withFormik({
+  // default form values
   mapPropsToValues() {
     return {
-      name: '',
       email: '',
       password: ''
     };
   },
   validationSchema: Yup.object().shape({
     // TODO: add username limitations (spaces, etc)
+    // Validations for user input
     email: Yup.string()
       .email()
-      .required()
-      .max(150),
+      .max(160)
+      .required(),
     password: Yup.string()
       .min(6)
       .required()
   }),
-  handleSubmit(values, errors) {
-    axios.post('/auth/login', values).then(res => {
-      if (res.data.message === 'Login Successful') {
+  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+    axios
+      .post('/auth/login', values)
+      .then(res => {
+        console.log(res);
+        resetForm();
         localStorage.setItem('jwtToken', res.data.access_token);
+        const decoded = jwtDecode(res.data.access_token);
+        setSubmitting(false);
+        authStore.setUser(decoded);
         //  redirect after success
         // set a flash message after success(?)
-      }
-    });
+      })
+      .catch(err => {
+        console.log(err.response.data);
+        // destructures the errors from back end
+        setSubmitting(false);
+        const { email, password } = err.response.data;
+        //  destructures the errors into errors to display after submit
+        setErrors({
+          email,
+          password
+        });
+      });
   }
 })(Login);
 
-export default FormikLogin;
-
-// TODO: nevber use formik when i want to have conditionally different routes etc
+export default FormikAuth;
