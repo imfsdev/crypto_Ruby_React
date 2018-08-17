@@ -47,7 +47,12 @@ class UsersController < ApplicationController
            message: "Login Successful"
          }
        else
-         render json: { error: command.errors }, status: :unauthorized
+
+         if @user = User.find_by_email(email)
+           render json: { password: "Incorrect password" }, status: :unauthorized
+         else
+           render json: { email: "No user with that email exists" }, status: :unauthorized
+         end
        end
      end
 end
