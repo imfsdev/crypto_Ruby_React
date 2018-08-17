@@ -127,7 +127,7 @@ const FormikAuth = withFormik({
         const submitErrors = err.response.data.errors;
         //  set up error messages for
         console.log(submitErrors);
-        setErrors({ name: `Username ${submitErrors.name}` });
+        setErrors({ name: submitErrors.name[0] });
       });
   }
 })(Register);
