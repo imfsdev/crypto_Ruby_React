@@ -105,6 +105,7 @@ export default class Navbar extends Component {
                   </div>
                 </div>
               </div>
+              {/* if user is not logged in display this, use authStore user to check */}
               <div className="mobile-auth">
                 <Link to="/register" className="navbar-item">
                   Sign Up
