@@ -30,7 +30,6 @@ class Navbar extends Component {
 
   render() {
     const { authStore } = this.props;
-    console.log(authStore.User);
     return (
       <nav className="navbar is-transparent is-fixed-top">
         <div className="container">
@@ -43,7 +42,7 @@ class Navbar extends Component {
                 height="28"
               />
             </a>
-            <div
+            <span
               onClick={this.toggleBurger}
               onKeyDown={this.toggleBurger}
               id="burger"
@@ -54,7 +53,7 @@ class Navbar extends Component {
               <span />
               <span />
               <span />
-            </div>
+            </span>
           </div>
 
           <div id="navMenu" className="navbar-menu">
@@ -62,64 +61,23 @@ class Navbar extends Component {
               <a className="navbar-item" href="https://bulma.io/">
                 Home
               </a>
-              <div className="navbar-item has-dropdown">
-                <a className="navbar-link" href="/documentation/overview/start/">
-                  Docs
-                </a>
-                <div className="navbar-dropdown is-boxed">
-                  <a className="navbar-item" href="/documentation/overview/start/">
-                    Overview
-                  </a>
-                  <a
-                    className="navbar-item"
-                    href="https://bulma.io/documentation/modifiers/syntax/"
-                  >
-                    Modifiers
-                  </a>
-                  <a className="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                    Columns
-                  </a>
-                  <a
-                    className="navbar-item"
-                    href="https://bulma.io/documentation/layout/container/"
-                  >
-                    Layout
-                  </a>
-                  <a className="navbar-item" href="https://bulma.io/documentation/form/general/">
-                    Form
-                  </a>
-                  <hr className="navbar-divider" />
-                  <a className="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                    Elements
-                  </a>
-                  <a
-                    className="navbar-item is-active"
-                    href="https://bulma.io/documentation/components/breadcrumb/"
-                  >
-                    Components
-                  </a>
-                </div>
-              </div>
             </div>
             <div className="navbar-end">
               {!authStore.user.user_id ? (
                 <ReactAux>
                   <div className="desktop-auth">
-                    {/* eslint-disable-next-line */}
-                    <div onClick={this.toggleDropdown} className="navbar-item has-dropdown">
-                      <a className="navbar-link">Sign Up</a>
+                    <div className="navbar-item has-dropdown">
+                      <button onClick={this.toggleDropdown} className="navbar-link">
+                        Sign Up
+                      </button>
                       <div className="navbar-dropdown is-boxed is-right">
                         <Register />
                       </div>
                     </div>
-                    <div
-                      onClick={this.toggleDropdown}
-                      onKeyDown={this.toggleDropdown}
-                      role="button"
-                      tabIndex="0"
-                      className="navbar-item has-dropdown "
-                    >
-                      <a className="navbar-link">Log In</a>
+                    <div className="navbar-item has-dropdown ">
+                      <button onClick={this.toggleDropdown} className="navbar-link">
+                        Log In
+                      </button>
                       <div className="navbar-dropdown is-boxed is-right">
                         <Login />
                       </div>
