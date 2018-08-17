@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
+import ReactAux from '../../Hoc/ReactAux';
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
 
-export default class Navbar extends Component {
+@inject('authStore')
+@observer
+class Navbar extends Component {
   state = {
     // eslint-disable-next-line
     signup: false,
@@ -20,6 +24,8 @@ export default class Navbar extends Component {
   };
 
   render() {
+    const { authStore } = this.props;
+    console.log(authStore.User);
     return (
       <nav className="navbar is-transparent is-fixed-top">
         <div className="container">
@@ -91,29 +97,37 @@ export default class Navbar extends Component {
               </div>
             </div>
             <div className="navbar-end">
-              <div className="desktop-auth">
-                <div className="navbar-item has-dropdown is-hoverable">
-                  <a className="navbar-link">Sign Up</a>
-                  <div className="navbar-dropdown is-boxed is-right">
-                    <Register />
+              {!authStore.user.user_id ? (
+                <ReactAux>
+                  <div className="desktop-auth">
+                    <div className="navbar-item has-dropdown is-hoverable">
+                      <a className="navbar-link">Sign Up</a>
+                      <div className="navbar-dropdown is-boxed is-right">
+                        <Register />
+                      </div>
+                    </div>
+                    <div className="navbar-item has-dropdown is-hoverable">
+                      <a className="navbar-link">Log In</a>
+                      <div className="navbar-dropdown is-boxed is-right">
+                        <Login />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="navbar-item has-dropdown is-hoverable">
-                  <a className="navbar-link">Log In</a>
-                  <div className="navbar-dropdown is-boxed is-right">
-                    <Login />
+                  <div className="mobile-auth">
+                    <Link to="/register" className="navbar-item">
+                      Sign Up
+                    </Link>
+                    <Link to="/login" className="navbar-item">
+                      Login
+                    </Link>
                   </div>
+                </ReactAux>
+              ) : (
+                <div className="navbar-item">
+                  User ID:
+                  {authStore.user.user_id}
                 </div>
-              </div>
-              {/* if user is not logged in display this, use authStore user to check */}
-              <div className="mobile-auth">
-                <Link to="/register" className="navbar-item">
-                  Sign Up
-                </Link>
-                <Link to="/login" className="navbar-item">
-                  Login
-                </Link>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -121,3 +135,5 @@ export default class Navbar extends Component {
     );
   }
 }
+
+export default Navbar;

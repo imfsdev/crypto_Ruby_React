@@ -1,12 +1,29 @@
 import { observable, action, computed } from 'mobx';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import * as R from 'ramda';
 
 import setAuthToken from '../utils/setAuthToken';
 
 class AuthStore {
   @observable
   user = {};
+
+  @action
+  setUser = decoded => {
+    // this.isAuthenticated = R.isEmpty(decoded);
+    this.user = decoded;
+    console.log(this.user);
+  };
+
+  // TODO: test if this works properly
+  @action
+  logoutUser = () => {
+    localStorage.removeItem('jwtToken');
+    setAuthToken(false);
+    this.user = {};
+  };
+
   @action
   loginUser = userData => {
     axios
