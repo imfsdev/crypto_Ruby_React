@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
 
@@ -91,17 +91,27 @@ export default class Navbar extends Component {
               </div>
             </div>
             <div className="navbar-end">
-              <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link">Sign Up</a>
-                <div className="navbar-dropdown is-boxed is-right desktop-auth">
-                  <Register />
+              <div className="desktop-auth">
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <a className="navbar-link">Sign Up</a>
+                  <div className="navbar-dropdown is-boxed is-right">
+                    <Register />
+                  </div>
+                </div>
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <a className="navbar-link">Log In</a>
+                  <div className="navbar-dropdown is-boxed is-right">
+                    <Login />
+                  </div>
                 </div>
               </div>
-              <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link">Log In</a>
-                <div className="navbar-dropdown is-boxed is-right desktop-auth">
-                  <Login />
-                </div>
+              <div className="mobile-auth">
+                <Link to="/register" className="navbar-item">
+                  Sign Up
+                </Link>
+                <Link to="/login" className="navbar-item">
+                  Login
+                </Link>
               </div>
             </div>
           </div>

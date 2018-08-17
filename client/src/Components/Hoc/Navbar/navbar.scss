@@ -1,6 +1,14 @@
+//  displays basic links to login/logout pages if on a small screen, else it will display the dropdown login
 .desktop-auth {
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1088px) {
     display: flex;
+  }
+}
+
+.mobile-auth {
+  display: block;
+  @media (min-width: 1088px) {
+    display: none;
   }
 }
