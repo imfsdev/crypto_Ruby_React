@@ -15,7 +15,7 @@ class Home extends Component {
               <h1 className="title ">TRACK THE LATEST BITCOIN PRICES</h1>
               <h1 className="subtitle">TRACK YOUR PORTFOLIO</h1>
               <button className="home-scroll">
-                <i className="fas fa-arrow-down" />
+                <i className="fas fa-chevron-down" />
               </button>
             </div>
           </div>
