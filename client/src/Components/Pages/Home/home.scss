@@ -18,4 +18,14 @@ canvas {
     opacity: 0.8;
     margin-top: 100px;
   }
+  &-cards {
+    margin-top: 100px;
+    @media (min-width: 768px) {
+      margin-top: 150px;
+    }
+    &-card {
+      height: 250px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
 }

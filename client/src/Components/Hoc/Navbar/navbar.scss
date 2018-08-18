@@ -14,9 +14,13 @@
 }
 
 .navbar {
+  span {
+    color: #fafafa;
+  }
   &.is-transparent {
     background-color: transparent;
     background-image: none;
+    color: rgb(53, 53, 53);
   }
 }
 
