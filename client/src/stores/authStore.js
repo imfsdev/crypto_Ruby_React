@@ -34,7 +34,6 @@ class AuthStore {
       })
       .then(res => {
         this.user = jwtDecode(res.data.access_token);
-        console.log(this.user);
       })
       .catch(err => {
         console.log(err);

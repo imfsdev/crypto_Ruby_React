@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       authenticate(user_params["email"], user_params["password"])
     else
       render json: {
-        errors: @user.errors
+          errors: @user.errors
       }.to_json, status: :bad
     end
   end
@@ -21,37 +21,37 @@ class UsersController < ApplicationController
     authenticate params[:email], params[:password]
   end
 
-  def test
+  def current_user
+    @user = User.find(params[:id])
     render json: {
-          message: "You have passed authentication and authorization test"
-        }
+      name: @user.name
+    }.to_json, status: 200
   end
 
 
-   private
+  private
 
-     def user_params
-       params.permit(
-         :name,
-         :email,
-         :password
-       )
-     end
+    def user_params
+      params.permit(
+        :name,
+          :email,
+          :password
+      )
+    end
 
-     def authenticate(email, password)
-       command = AuthenticateUser.call(email, password)
+    def authenticate(email, password)
+      command = AuthenticateUser.call(email, password)
 
-       if command.success?
-         render json: {
-           access_token: command.result,
-           message: "Login Successful"
-         }
-       else
-         if @user = User.find_by_email(email)
-           render json: { password: "Incorrect password" }, status: :unauthorized
-         else
-           render json: { email: "No user with that email exists" }, status: :unauthorized
-         end
-       end
-     end
+      if command.success?
+        render json: {
+            access_token: command.result,
+        }
+      else
+        if @user = User.find_by_email(email)
+          render json: { password: "Incorrect password" }, status: :unauthorized
+        else
+          render json: { email: "No user with that email exists" }, status: :unauthorized
+        end
+      end
+    end
 end
