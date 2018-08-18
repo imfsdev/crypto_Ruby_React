@@ -4,11 +4,14 @@ canvas {
   position: absolute;
   z-index: -1;
   width: 100vw !important;
-  height: 90vh !important;
+  height: 600px !important;
   margin-top: -53px;
   background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534626286/Crypto/blur.jpg) no-repeat center center fixed;
   @media (min-width: 1918px) {
     background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534633254/Crypto/blurryUHD.jpg) no-repeat center center fixed;
+  }
+  @media (min-width: 768px) {
+    height: 800px !important;
   }
 }
 
@@ -20,15 +23,12 @@ canvas {
     border: 2px solid $primary-color;
     border-radius: 50%;
     opacity: 0.8;
-    margin-top: 100px;
+    margin-top: 50px;
   }
   &-cards {
     margin-top: 100px;
     @media (min-width: 768px) {
-      margin-top: 150px;
-    }
-    @media (min-width: 1080px) {
-      margin-top: 180px;
+      margin-top: 300px;
     }
     &-card {
       height: 250px;
