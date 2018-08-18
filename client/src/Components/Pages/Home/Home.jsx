@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import particlesJSON from './particles.json';
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
 
@@ -16,14 +15,58 @@ class Home extends Component {
           id="particles"
           params={{
             particles: {
-              line_linked: {
-                shadow: {
+              number: {
+                value: 100,
+                density: {
                   enable: true,
-                  color: '#3CA9D1',
-                  blur: 5
+                  value_area: 800
+                }
+              },
+              line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ffffff',
+                opacity: 0.4,
+                width: 1
+              },
+              shape: {
+                type: 'circle',
+                stroke: {
+                  width: 0,
+                  color: '#000000'
+                },
+                polygon: {
+                  nb_sides: 7
                 }
               }
-            }
+            },
+            interactivity: {
+              detect_on: 'canvas',
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: 'grab'
+                },
+                onclick: {
+                  enable: true,
+                  mode: 'push'
+                },
+                resize: true
+              },
+              modes: {
+                grab: {
+                  distance: 400,
+                  line_linked: {
+                    opacity: 1
+                  }
+                },
+                repulse: {
+                  distance: 200,
+                  duration: 0.4
+                }
+              }
+            },
+            retina_detect: true
           }}
           style={{
             width: '100%',
