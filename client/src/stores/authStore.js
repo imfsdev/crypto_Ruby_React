@@ -1,7 +1,7 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action } from 'mobx';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import * as R from 'ramda';
+// import * as R from 'ramda';
 
 import setAuthToken from '../utils/setAuthToken';
 
@@ -35,11 +35,7 @@ class AuthStore {
   @action
   loginUser = userData => {
     axios
-      .post('/auth/login', {
-        name: 'hello2',
-        email: 'hello@world2',
-        password: 'password2'
-      })
+      .post('/auth/login', userData)
       .then(res => {
         this.user = jwtDecode(res.data.access_token);
       })
