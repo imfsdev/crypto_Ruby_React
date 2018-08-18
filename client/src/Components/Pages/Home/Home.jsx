@@ -17,6 +17,17 @@ class Home extends Component {
               <button className="home-scroll">
                 <i className="fas fa-chevron-down" />
               </button>
+              <div className="columns home-cards">
+                <div className="column">
+                  <div className="home-cards-card">1</div>
+                </div>
+                <div className="column">
+                  <div className="home-cards-card">1</div>
+                </div>
+                <div className="column">
+                  <div className="home-cards-card">1</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
