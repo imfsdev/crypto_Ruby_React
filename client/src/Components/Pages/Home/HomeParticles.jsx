@@ -67,7 +67,8 @@ const HomeParticles = () => (
       retina_detect: true
     }}
     style={{
-      background: 'rgb(53,53,53)'
+      background:
+        'url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534626286/Crypto/blur.jpg)'
     }}
   />
 );

@@ -43,7 +43,7 @@ class Navbar extends Component {
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}
-        <nav className="navbar is-dark">
+        <nav className="navbar is-transparent">
           <div className="container">
             <div className="navbar-brand">
               <a className="navbar-item" href="/">
