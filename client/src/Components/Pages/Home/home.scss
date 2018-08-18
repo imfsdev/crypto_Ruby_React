@@ -1,4 +1,5 @@
 //  style for all canvases but there will only be one anyway
+@import '../../../styles/variables.scss';
 canvas {
   position: absolute;
   z-index: -1;
@@ -9,4 +10,10 @@ canvas {
 
 .home {
   margin-top: 100px;
+  &-scroll {
+    height: 40px;
+    width: 40px;
+    border: 2px solid $primary-color;
+    border-radius: 50%;
+  }
 }
