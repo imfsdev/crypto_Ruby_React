@@ -3,8 +3,10 @@
 @import '../Components/Hoc/Navbar/navbar.scss';
 @import '../Components/Pages/Home/home.scss';
 @import './variables.scss';
+// global styles go here
 html {
   font-family: 'Open Sans', sans-serif;
+  color: #fafafa;
 }
 
 h1,
