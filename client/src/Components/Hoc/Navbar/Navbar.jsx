@@ -46,13 +46,10 @@ class Navbar extends Component {
         <nav className="navbar is-dark">
           <div className="container">
             <div className="navbar-brand">
-              <a className="navbar-item" href="https://bulma.io">
-                <img
-                  src="https://bulma.io/images/bulma-logo.png"
-                  alt="Bulma: a modern CSS framework based on Flexbox"
-                  width="112"
-                  height="28"
-                />
+              <a className="navbar-item" href="/">
+                <strong>
+                  <p>CryptoTracker</p>
+                </strong>
               </a>
               <span
                 onClick={this.toggleBurger}
@@ -70,7 +67,7 @@ class Navbar extends Component {
 
             <div className={`navbar-menu${this.state.burgerOpen ? 'is-active' : ''}`}>
               <div className="navbar-start">
-                <a className="navbar-item" href="https://bulma.io/">
+                <a className="navbar-item" href="/">
                   Home
                 </a>
               </div>
