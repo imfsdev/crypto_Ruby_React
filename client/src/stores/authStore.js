@@ -11,9 +11,17 @@ class AuthStore {
 
   @action
   setUser = decoded => {
-    // this.isAuthenticated = R.isEmpty(decoded);
     this.user = decoded;
-    console.log(this.user);
+    console.log(decoded.user_id);
+    // gets the user's username
+    axios
+      .post('/auth/current_user', { id: decoded.user_id })
+      .then(res => {
+        this.user.name = res.data.name;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   // TODO: test if this works properly
