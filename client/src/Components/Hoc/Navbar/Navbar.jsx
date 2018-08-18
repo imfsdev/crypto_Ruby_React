@@ -43,7 +43,7 @@ class Navbar extends Component {
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}
-        <nav className="navbar is-transparent is-fixed-top">
+        <nav className="navbar is-dark">
           <div className="container">
             <div className="navbar-brand">
               <a className="navbar-item" href="https://bulma.io">
@@ -115,9 +115,7 @@ class Navbar extends Component {
                 ) : (
                   <ReactAux>
                     <div className="navbar-item">
-                      <p> Your Account</p>
-                      User ID:
-                      {authStore.user.user_id}
+                      <p>{authStore.user.name}</p>
                     </div>
                     <button onClick={authStore.logoutUser} className="navbar-item">
                       <span>Logout</span>
