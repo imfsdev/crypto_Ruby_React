@@ -3,15 +3,18 @@ import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
 import HomeParticles from './HomeParticles';
 
-// eslint-disable-next-line
-
 class Home extends Component {
   render() {
     return (
       <ReactAux>
         <Navbar />
         <HomeParticles />
-        <h1>Home!</h1>
+        <div className="home-particles-end" />
+        <div className="columns">
+          <div className="column">
+            <p>hello</p>
+          </div>
+        </div>
         <a href="/login">signup</a>
       </ReactAux>
     );

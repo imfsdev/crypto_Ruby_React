@@ -1,7 +1,8 @@
-// #particles {
+//  style for all canvases but there will only be one anyway
 canvas {
+  position: absolute;
+  z-index: -1;
   width: 100vw !important;
-  height: 100vh !important;
+  height: 90vh !important;
+  margin-top: -53px;
 }
-
-// }
