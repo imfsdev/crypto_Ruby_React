@@ -6,6 +6,10 @@ canvas {
   width: 100vw !important;
   height: 90vh !important;
   margin-top: -53px;
+  background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534626286/Crypto/blur.jpg) no-repeat center center fixed;
+  @media (min-width: 1918px) {
+    background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534633254/Crypto/blurryUHD.jpg) no-repeat center center fixed;
+  }
 }
 
 .home {
@@ -23,9 +27,12 @@ canvas {
     @media (min-width: 768px) {
       margin-top: 150px;
     }
+    @media (min-width: 1080px) {
+      margin-top: 180px;
+    }
     &-card {
       height: 250px;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(22, 19, 51, 0.3);
     }
   }
 }
