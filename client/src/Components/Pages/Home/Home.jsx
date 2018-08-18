@@ -9,13 +9,14 @@ class Home extends Component {
       <ReactAux>
         <Navbar />
         <HomeParticles />
-        <div className="home-particles-end" />
-        <div className="columns">
-          <div className="column">
-            <p>hello</p>
+        <div className="container home">
+          <div className="hero">
+            <div className="hero-body has-text-centered">
+              <h1 className="title ">TRACK THE LATEST BITCOIN PRICES</h1>
+              <h1 className="subtitle">TRACK YOUR PORTFOLIO</h1>
+            </div>
           </div>
         </div>
-        <a href="/login">signup</a>
       </ReactAux>
     );
   }
