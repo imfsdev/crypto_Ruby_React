@@ -42,7 +42,7 @@ const HomeParticles = () => (
           },
           onclick: {
             enable: true,
-            mode: 'push'
+            mode: 'bubble'
           },
           resize: true,
           onresize: {
