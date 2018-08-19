@@ -9,7 +9,7 @@ export default class CurrentPricesScroller extends Component {
   };
 
   componentDidMount() {
-    axios.get('https://api.coinmarketcap.com/v2/ticker/?limit=5').then(res => {
+    axios.get('https://api.coinmarketcap.com/v2/ticker/?limit=10').then(res => {
       // eslint-disable-next-line
       // orders the prices properly from 0-4
       const prices = Object.values(res.data.data);
