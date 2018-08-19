@@ -3,11 +3,13 @@
   padding-top: 50px;
   padding-bottom: 50px;
   border: 1px solid;
-  border-image: linear-gradient(to top, #6bc9ff00 0%, $transparent-primary-color 100%);
+  border-image: linear-gradient(to top, rgba(107, 201, 255, 0) 0%, $transparent-primary-color 100%);
   border-image-slice: 1;
-  &-text {
-    animation: 2500ms pricesAnim infinite;
-  }
+  &-text {}
+}
+
+.currentprices-anim {
+  animation: 2500ms pricesAnim infinite;
 }
 
 @keyframes pricesAnim {
@@ -15,11 +17,11 @@
     opacity: 0;
     transform: translateY(-50px)
   }
-  25% {
+  20% {
     opacity: 1;
     transform: translateY(0px);
   }
-  85% {
+  80% {
     transform: translateY(0px);
     opacity: 1;
   }
