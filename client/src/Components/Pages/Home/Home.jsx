@@ -37,6 +37,7 @@ class Home extends Component {
                 />
               </div>
               <CurrentPricesScroller />
+              <div className="primarybutton button is-medium">Sign Up</div>
             </div>
           </div>
         </div>
