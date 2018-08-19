@@ -53,4 +53,11 @@ canvas {
       }
     }
   }
+  &-signup {
+    margin-top: 50px;
+    &-text {
+      margin-top: 20px;
+      opacity: 0.9;
+    }
+  }
 }

@@ -47,10 +47,10 @@ input[type="reset"] {
   background: linear-gradient(to right, $primary-color, $secondary-color);
   border: 0px;
   color: #fafaface;
-  transition: 0.2s ease-out;
+  transition: 0.2s ease-in-out;
   &:hover {
     color: #fafaface;
-    transition: 0.4s ease-out;
+    transition: 0.4s ease-in-out;
     background-position: 100px;
   }
 }
