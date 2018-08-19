@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
+import CurrentPricesScroller from '../../Hoc/CurrentPricesScroller/CurrentPricesScroller';
 import HomeParticles from './HomeParticles/HomeParticles';
 import CardItem from './CardItem/CardItem';
 
@@ -35,6 +36,7 @@ class Home extends Component {
                   body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
                 />
               </div>
+              <CurrentPricesScroller />
             </div>
           </div>
         </div>

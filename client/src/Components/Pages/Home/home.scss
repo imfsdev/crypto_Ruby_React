@@ -36,14 +36,16 @@ canvas {
       background: rgba(22, 19, 51, 0.3);
       border-radius: 4px;
       padding: 0 25px;
+      margin-bottom: 50px;
       &-subtitle {
         color: $primary-color;
         padding: 15px 0;
-        font-weight: 700;
+        font-weight: 500;
+        font-size: 1.2em;
       }
       &-title {
-        font-size: 1.3em;
-        padding: 15px 0;
+        font-size: 1.8em;
+        padding: 0 0 15px 0;
         font-weight: 700;
       }
       &-body {
