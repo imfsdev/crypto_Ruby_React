@@ -37,7 +37,12 @@ class Home extends Component {
                 />
               </div>
               <CurrentPricesScroller />
-              <div className="primarybutton button is-medium">Sign Up</div>
+              <div className="home-signup">
+                <div className="primarybutton button is-medium">Sign Up</div>
+                <p className="subtitle is-6 home-signup-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
             </div>
           </div>
         </div>
