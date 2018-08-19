@@ -42,7 +42,12 @@ export default class CurrentPricesScroller extends Component {
   render() {
     return (
       <div className="currentprices">
-        <h1 className="title currentprices-text">
+        <h1
+          // adds the animation when the api call has ended, so things change at the right times.
+          className={`title currentprices-text ${
+            this.state.currentCoin !== '' ? 'currentprices-anim' : ''
+          }`}
+        >
           {this.state.currentCoin}: ${this.state.currentPrice}
         </h1>
       </div>
