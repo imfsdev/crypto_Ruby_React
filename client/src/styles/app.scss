@@ -42,3 +42,15 @@ input[type="reset"] {
     outline: 5px auto -webkit-focus-ring-color;
   }
 }
+
+.primarybutton {
+  background: linear-gradient(to right, $primary-color, $secondary-color);
+  border: 0px;
+  color: #fafaface;
+  transition: 0.2s ease-out;
+  &:hover {
+    color: #fafaface;
+    transition: 0.4s ease-out;
+    background-position: 100px;
+  }
+}
