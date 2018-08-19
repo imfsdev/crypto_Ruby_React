@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
-import HomeParticles from './HomeParticles';
+import HomeParticles from './HomeParticles/HomeParticles';
+import CardItem from './CardItem/CardItem';
 
 class Home extends Component {
   render() {
@@ -18,15 +19,21 @@ class Home extends Component {
                 <i className="fas fa-chevron-down" />
               </button>
               <div className="columns home-cards">
-                <div className="column">
-                  <div className="home-cards-card">1</div>
-                </div>
-                <div className="column">
-                  <div className="home-cards-card">1</div>
-                </div>
-                <div className="column">
-                  <div className="home-cards-card">1</div>
-                </div>
+                <CardItem
+                  subtitle="Item 1"
+                  title="Crypto"
+                  body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
+                />
+                <CardItem
+                  subtitle="Item 1"
+                  title="Crypto"
+                  body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
+                />
+                <CardItem
+                  subtitle="Item 1"
+                  title="Crypto"
+                  body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
+                />
               </div>
             </div>
           </div>
