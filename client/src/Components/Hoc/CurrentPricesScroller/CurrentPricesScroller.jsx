@@ -22,33 +22,30 @@ export default class CurrentPricesScroller extends Component {
         prices
       });
 
-      console.log(this.state);
       // eslint-disable-next-line
       const len = (this.state.prices).length;
-      console.log(len);
-      console.log(this.state.prices[0]);
-
-      for (let i = 0; i < len; i += 1) {
-        setTimeout(() => {
-          this.setState({
-            currentPrice: prices[i].name,
-            currentCoin: prices[i].quotes.USD.price
-          });
-        }, i * 5000);
-      }
+      const findCurrentPrices = () => {
+        for (let i = 0; i < len; i += 1) {
+          setTimeout(() => {
+            this.setState({
+              currentCoin: prices[i].name,
+              currentPrice: prices[i].quotes.USD.price.toFixed(2)
+            });
+          }, i * 5000);
+        }
+      };
+      findCurrentPrices();
+      setInterval(() => {
+        findCurrentPrices();
+      }, 25000);
     });
-    // every 3 seconds replace the currentCoin with 1 of the prices, going through 1 by 1
-    //  go back to the first one if the current one is the last one.
-    // const size = Object.keys(this.state.prices).length;
-    // setInterval(() => {
-    // console.log('fuck');
-    // }, 3000);
   }
+
   render() {
     return (
       <div className="currentprices">
         <h1 className="title">
-          {this.state.currentCoin}: {this.state.currentPrice}
+          {this.state.currentCoin}: ${this.state.currentPrice}
         </h1>
       </div>
     );
