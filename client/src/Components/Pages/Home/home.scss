@@ -5,13 +5,13 @@ canvas {
   z-index: -1;
   width: 100vw !important;
   height: 600px !important;
-  margin-top: -53px;
+  margin-top: -52px;
   background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534626286/Crypto/blur.jpg) no-repeat center center fixed;
   @media (min-width: 1918px) {
     background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534633254/Crypto/blurryUHD.jpg) no-repeat center center fixed;
   }
   @media (min-width: 768px) {
-    height: 800px !important;
+    height: 850px !important;
   }
 }
 
@@ -27,12 +27,28 @@ canvas {
   }
   &-cards {
     margin-top: 100px;
+    color: #fafafa;
     @media (min-width: 768px) {
       margin-top: 300px;
     }
-    &-card {
+    &-item {
       height: 250px;
       background: rgba(22, 19, 51, 0.3);
+      border-radius: 4px;
+      padding: 0 25px;
+      &-subtitle {
+        color: $primary-color;
+        padding: 15px 0;
+        font-weight: 700;
+      }
+      &-title {
+        font-size: 1.3em;
+        padding: 15px 0;
+        font-weight: 700;
+      }
+      &-body {
+        opacity: 0.6;
+      }
     }
   }
 }
