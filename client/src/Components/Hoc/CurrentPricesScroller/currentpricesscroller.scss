@@ -2,9 +2,6 @@
 .currentprices {
   padding-top: 50px;
   padding-bottom: 50px;
-  border: 1px solid;
-  border-image: linear-gradient(to top, rgba(107, 201, 255, 0) 0%, $transparent-primary-color 100%);
-  border-image-slice: 1;
   &-text {}
 }
 
