@@ -4,19 +4,14 @@ import axios from 'axios';
 export default class CurrentPricesScroller extends Component {
   state = {
     prices: {},
-    // eslint-disable-next-line
     currentCoin: '',
-    // eslint-disable-next-line
     currentPrice: ''
   };
 
-  // fades up from the bottom
-  //  add class eg (BTC) to change colors
-  // shows for 3+ seconds
-  // fades up to the top, repeat
   componentDidMount() {
     axios.get('https://api.coinmarketcap.com/v2/ticker/?limit=5').then(res => {
       // eslint-disable-next-line
+      // orders the prices properly from 0-4
       const prices = Object.values(res.data.data);
       this.setState({
         prices
@@ -24,6 +19,8 @@ export default class CurrentPricesScroller extends Component {
 
       // eslint-disable-next-line
       const len = (this.state.prices).length;
+      const delay = 2500;
+      // loops through each item in prices, sets the name/price state every 2.5 seconds to the next one
       const findCurrentPrices = () => {
         for (let i = 0; i < len; i += 1) {
           setTimeout(() => {
@@ -31,13 +28,14 @@ export default class CurrentPricesScroller extends Component {
               currentCoin: prices[i].name,
               currentPrice: prices[i].quotes.USD.price.toFixed(2)
             });
-          }, i * 5000);
+          }, i * delay);
         }
       };
+      // runs the function right away, then runs it again when the delay*len is up eg(2500ms x 5)
       findCurrentPrices();
       setInterval(() => {
         findCurrentPrices();
-      }, 25000);
+      }, delay * len);
     });
   }
 
