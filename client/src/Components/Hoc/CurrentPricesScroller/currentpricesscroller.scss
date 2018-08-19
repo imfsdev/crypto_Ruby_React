@@ -1,0 +1,25 @@
+.currentprices {
+  &-text {
+    height: 800px;
+    animation: 2500ms pricesAnim infinite;
+  }
+}
+
+@keyframes pricesAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px)
+  }
+  23% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  85% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(+50px);
+    opacity: 0;
+  }
+}

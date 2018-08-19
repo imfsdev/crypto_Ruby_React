@@ -42,7 +42,7 @@ export default class CurrentPricesScroller extends Component {
   render() {
     return (
       <div className="currentprices">
-        <h1 className="title">
+        <h1 className="title currentprices-text">
           {this.state.currentCoin}: ${this.state.currentPrice}
         </h1>
       </div>
