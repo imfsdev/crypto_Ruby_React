@@ -2,7 +2,6 @@
 
 # config/routes.rb
 Rails.application.routes.draw do
-  post 'user_token' => 'user_token#create'
   # register route
   post "auth/register", to: "users#register"
   post "auth/login", to: "users#login"
