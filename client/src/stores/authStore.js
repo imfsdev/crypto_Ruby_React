@@ -7,17 +7,19 @@ import setAuthToken from '../utils/setAuthToken';
 
 class AuthStore {
   @observable
+  isAuthenticated = false;
+  @observable
   user = {};
 
   @action
   setUser = decoded => {
     this.user = decoded;
-    console.log(decoded.user_id);
     // gets the user's username
     axios
       .post('/auth/current_user', { id: decoded.user_id })
       .then(res => {
         this.user.name = res.data.name;
+        this.isAuthenticated = true;
       })
       .catch(err => {
         console.log(err);
