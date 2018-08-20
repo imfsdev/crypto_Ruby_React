@@ -4,7 +4,8 @@ import { inject, observer } from 'mobx-react';
 import jwtDecode from 'jwt-decode';
 
 import Home from './Components/Pages/Home/Home';
-import Modal from './Components/Hoc/Modal/Modal';
+import Profile from './Components/Pages/Profile/Profile';
+
 import setAuthToken from './utils/setAuthToken';
 
 import '../src/styles/app.scss';
@@ -37,7 +38,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/text" exact component={Modal} />
+          <Route path="/profile" exact component={Profile} />
         </Switch>
       </BrowserRouter>
     );
