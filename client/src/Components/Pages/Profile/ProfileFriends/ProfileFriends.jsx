@@ -4,11 +4,16 @@ import React, { Component } from 'react';
 // each  has custom colors?
 export default class ProfileFriends extends Component {
   render() {
-    const friends = ['Billy', 'Jimmy'];
+    const friends = [
+      {
+        name: 'Billy',
+        coins: [1, 2, 3, 4, 5]
+      }
+    ];
 
     return (
       <div className="box">
-        <table className="table is-striped">
+        <table className="table is-striped is-fullwidth">
           <thead>
             <tr>
               <th>Friends</th>
@@ -24,6 +29,22 @@ export default class ProfileFriends extends Component {
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>
+                <a href="/">Billy</a>
+              </td>
+              <td>BTC</td>
+              <td>LTC</td>
+              <td>XLN</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="/">Billy</a>
+              </td>
+              <td>BTC</td>
+              <td>LTC</td>
+              <td>XLN</td>
+            </tr>
             <tr>
               <td>
                 <a href="/">Billy</a>

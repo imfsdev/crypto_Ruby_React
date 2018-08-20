@@ -8,6 +8,7 @@
 // Profile
 @import '../Components/Pages/Profile/profile.scss';
 @import '../Components/Pages/Profile/ProfileFriends/profilefriends.scss';
+@import '../Components/Pages/Profile/ProfileStats/profilestats.scss';
 // Variables
 @import './variables.scss';
 // global styles go here
@@ -24,7 +25,6 @@ h1,
 h2,
 h3 {
   font-family: 'Montserrat', sans-serif;
-  color: #fafafa;
 }
 
 .title,
