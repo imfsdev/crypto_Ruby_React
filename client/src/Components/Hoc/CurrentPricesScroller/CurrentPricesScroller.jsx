@@ -10,15 +10,15 @@ export default class CurrentPricesScroller extends Component {
 
   componentDidMount() {
     axios.get('https://api.coinmarketcap.com/v2/ticker/?limit=10').then(res => {
-      // eslint-disable-next-line
       // orders the prices properly from 0-4
       const prices = Object.values(res.data.data);
       this.setState({
         prices
       });
 
-      // eslint-disable-next-line
-      const len = (this.state.prices).length;
+      // console.log(this.state);
+
+      const len = this.state.prices.length;
       const delay = 2500;
       // loops through each item in prices, sets the name/price state every 2.5 seconds to the next one
       const findCurrentPrices = () => {
