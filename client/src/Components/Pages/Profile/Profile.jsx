@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-
+import { inject, observer } from 'mobx-react';
 import ReactAux from '../../Hoc/ReactAux';
 import Navbar from '../../Hoc/Navbar/Navbar';
 
 import ProfileFriends from './ProfileFriends/ProfileFriends';
 import ProfileStats from './ProfileStats/ProfileStats';
 
-export default class Profile extends Component {
+@inject('authStore')
+@observer
+class Profile extends Component {
+  componentDidMount() {
+    this.props.authStore.findUserInfo();
+  }
   render() {
     return (
       <ReactAux>
@@ -25,3 +30,4 @@ export default class Profile extends Component {
     );
   }
 }
+export default Profile;

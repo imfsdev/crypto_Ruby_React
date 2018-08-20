@@ -28,6 +28,11 @@ class UsersController < ApplicationController
     }.to_json, status: 200
   end
 
+  def user_cryptocurrencies
+    @user = User.find(params[:id])
+    puts @user
+  end
+
 
   private
 
