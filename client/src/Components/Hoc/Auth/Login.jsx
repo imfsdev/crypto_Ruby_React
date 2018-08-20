@@ -102,7 +102,6 @@ const FormikAuth = withFormik({
     axios
       .post('/auth/login', values)
       .then(res => {
-        console.log(res);
         resetForm();
         localStorage.setItem('jwtToken', res.data.access_token);
         const decoded = jwtDecode(res.data.access_token);

@@ -48,7 +48,6 @@ class AuthStore {
 
   @action
   registerUser = userData => {
-    console.log(userData);
     axios.post('/auth/register', userData).then(res => {
       localStorage.setItem('jwtToken', res.data.access_token);
     });

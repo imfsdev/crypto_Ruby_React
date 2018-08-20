@@ -15,9 +15,6 @@ export default class CurrentPricesScroller extends Component {
       this.setState({
         prices
       });
-
-      // console.log(this.state);
-
       const len = this.state.prices.length;
       const delay = 2500;
       // loops through each item in prices, sets the name/price state every 2.5 seconds to the next one
