@@ -7,11 +7,12 @@ ruby "2.5.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.1"
-gem "devise"
+# gem "devise"
 gem "bcrypt", "~> 3.1.7"
 gem "rack-cors", require: "rack/cors"
 gem "dotenv-rails", groups: %i[development test]
-gem "jwt"
+gem "jwt", "~> 1.5.0"
+gem "knock"
 gem 'simple_command'
 # Use Puma as the app server
 gem "puma", "~> 3.11"

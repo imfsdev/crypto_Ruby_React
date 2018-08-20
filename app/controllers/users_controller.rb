@@ -3,7 +3,8 @@
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
   # TODO: skip_before_action :authenticate_request, only: %i[login register]
-  skip_before_action :authenticate_request
+  skip_before_action :authenticate_user, only: %i[login register]
+  before_action :authenticate_user
   # POST /register
   def register
     @user = User.create(user_params)
@@ -29,6 +30,11 @@ class UsersController < ApplicationController
   end
 
   def user_cryptocurrencies
+    @user = User.find(params[:id])
+    puts @user
+  end
+
+  def add_user_cryptocurrencies
     @user = User.find(params[:id])
     puts @user
   end
