@@ -52,6 +52,20 @@ class AuthStore {
       localStorage.setItem('jwtToken', res.data.access_token);
     });
   };
+
+  @action
+  findUserInfo = () => {
+    setTimeout(() => {
+      axios
+        .post('/auth/user_cryptocurrencies', this.user.id)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, 3000);
+  };
 }
 
 export default new AuthStore();
