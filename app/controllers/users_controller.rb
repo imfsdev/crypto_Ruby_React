@@ -2,7 +2,7 @@
 
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  skip_before_action :authenticate_request, only: %i[login register]
+  skip_before_action :authenticate_request
   # skip_before_action :authenticate_
   # POST /register
   def register
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def current_user
     @user = User.find(params[:id])
     render json: {
-      name: @user.name
+      name: @current_user
     }.to_json, status: 200
   end
 
