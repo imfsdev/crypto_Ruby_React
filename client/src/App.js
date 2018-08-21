@@ -23,6 +23,7 @@ class App extends Component {
       this.props.authStore.setUser(decoded);
 
       // if the jwt is expired, log them out and remove the jwt
+      // TODO: check these
       const currentTime = Date.now() / 1000;
       if (decoded.exp < currentTime) {
         // logout user
