@@ -13,8 +13,11 @@ class AuthStore {
 
   @action
   setUser = decoded => {
-    this.user = decoded;
     // gets the user's name
+    this.user = decoded;
+  };
+  @action
+  getUser = () => {
     axios
       .post('/auth/current_user')
       .then(res => {
