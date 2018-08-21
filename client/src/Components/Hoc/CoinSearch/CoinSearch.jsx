@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import makeAnimated from 'react-select/lib/animated';
+import { inject, observer } from 'mobx-react';
 import Select from 'react-select';
 import axios from 'axios';
 
 //  set up a function to make a post request
 //  loading spinner until successful
 //  remove coins from the search when done
+@inject('authStore')
+@observer
 class CoinSearch extends Component {
   state = {
     selectedOptions: [],
@@ -13,6 +16,10 @@ class CoinSearch extends Component {
     loading: false
   };
   componentDidMount() {
+    axios.get('/auth/user_cryptocurrencies').then(res => {
+      console.log(res.data);
+    });
+
     axios.get('/api/cryptocurrencies').then(res => {
       const options = res.data.map(coin => ({
         value: coin.id,

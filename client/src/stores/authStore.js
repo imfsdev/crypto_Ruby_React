@@ -7,8 +7,6 @@ import setAuthToken from '../utils/setAuthToken';
 
 class AuthStore {
   @observable
-  isAuthenticated = false;
-  @observable
   user = {};
 
   @action
@@ -22,7 +20,6 @@ class AuthStore {
       .post('/auth/current_user')
       .then(res => {
         this.user.name = res.data.name;
-        this.isAuthenticated = true;
       })
       .catch(err => {
         console.log(err);
@@ -56,19 +53,20 @@ class AuthStore {
     });
   };
 
-  @action
-  findUserProfile = () => {
-    setTimeout(() => {
-      axios
-        .get('/auth/user_cryptocurrencies', this.user.id)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }, 3000);
-  };
+  // TODO: delete/use this?
+  // @action
+  // findUserProfile = () => {
+  //   setTimeout(() => {
+  //     axios
+  //       .get('/auth/user_cryptocurrencies', this.user.id)
+  //       .then(res => {
+  //         console.log(res);
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //       });
+  //   }, 3000);
+  // };
 }
 
 export default new AuthStore();
