@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import makeAnimated from 'react-select/lib/animated';
 import Select from 'react-select';
 import axios from 'axios';
 
+//  set up a function to make a post request
+//  loading spinner until successful
+//  remove coins from the search when done
 class CoinSearch extends Component {
   state = {
     selectedOption: null,
@@ -13,6 +17,7 @@ class CoinSearch extends Component {
         value: coin.id,
         label: coin.name
       }));
+      console.log(options);
       this.setState({
         options
       });
@@ -27,7 +32,16 @@ class CoinSearch extends Component {
     const { selectedOption } = this.state;
     return (
       <div className="coinsearch">
-        <Select value={selectedOption} onChange={this.handleChange} options={this.state.options} />
+        <Select
+          className="coinsearch-search"
+          value={selectedOption}
+          onChange={this.handleChange}
+          closeMenuOnSelect={false}
+          components={makeAnimated()}
+          isMulti
+          options={this.state.options}
+        />
+        <button className="button is-info coinsearch-button">Add coins</button>
       </div>
     );
   }

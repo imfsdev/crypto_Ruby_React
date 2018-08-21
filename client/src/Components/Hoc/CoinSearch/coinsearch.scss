@@ -1,3 +1,22 @@
 .coinsearch {
-  margin-bottom: 20px;
+  margin-bottom: 20px; // display: flex;
+  @media (min-width: 567px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-search {
+    width: 100%;
+    @media (min-width: 567px) {
+      width: 73%;
+    }
+  }
+  &-button {
+    margin-top: 5px;
+    width: 100%;
+    @media (min-width: 567px) {
+      width: 25%;
+      margin-top: 0px;
+      height: 38px;
+    }
+  }
 }
