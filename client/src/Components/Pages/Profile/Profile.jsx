@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import { Redirect } from 'react-router-dom';
 import ReactAux from '../../Hoc/ReactAux';
 import Navbar from '../../Hoc/Navbar/Navbar';
 
@@ -10,22 +11,28 @@ import ProfileStats from './ProfileStats/ProfileStats';
 @observer
 class Profile extends Component {
   componentDidMount() {
-    this.props.authStore.findUserProfile();
+    // this.props.authStore.findUserProfile();
   }
+
   render() {
+    const { authStore } = this.props;
     return (
       <ReactAux>
         <Navbar />
-        <div className="container section">
-          <div className="columns">
-            <div className="column is-9">
-              <ProfileStats />
-            </div>
-            <div className="column">
-              <ProfileFriends />
+        {authStore.user.name ? (
+          <div className="container section">
+            <div className="columns">
+              <div className="column is-9">
+                <ProfileStats />
+              </div>
+              <div className="column">
+                <ProfileFriends />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <button className="is-loading" />
+        )}
       </ReactAux>
     );
   }
