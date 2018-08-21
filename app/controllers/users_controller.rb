@@ -2,7 +2,7 @@
 
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  skip_before_action :authenticate_request
+  # skip_before_action :authenticate_request
   # skip_before_action :authenticate_
   # POST /register
   def register

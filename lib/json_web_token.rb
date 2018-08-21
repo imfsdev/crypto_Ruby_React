@@ -16,7 +16,7 @@ class JsonWebToken
     def decode(token)
       # decodes the token to get user data (payload)
       # TODO: make this work properly in production
-      body = JWT.decode(token, ENV["JWT_KEY"])
+      body = JWT.decode(token, ENV["JWT_KEY"])[0]
       HashWithIndifferentAccess.new body
 
     # raise custom error to be handled by custom handler
