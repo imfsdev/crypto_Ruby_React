@@ -13,9 +13,9 @@ class AuthStore {
 
   @action
   setUser = decoded => {
-    // gets the user's name
     this.user = decoded;
   };
+
   @action
   getUser = () => {
     axios
@@ -57,10 +57,10 @@ class AuthStore {
   };
 
   @action
-  findUserInfo = () => {
+  findUserProfile = () => {
     setTimeout(() => {
       axios
-        .post('/auth/user_cryptocurrencies', this.user.id)
+        .get('/auth/user_cryptocurrencies', this.user.id)
         .then(res => {
           console.log(res);
         })
