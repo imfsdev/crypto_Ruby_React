@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import { inject, observer } from 'mobx-react';
 import CoinSearch from '../../../Hoc/CoinSearch/CoinSearch';
 
@@ -12,8 +14,21 @@ class ProfileStats extends Component {
   componentDidMount() {
     this.props.authStore.getUserCryptocurrencies();
   }
+
+  // for each one, make an api call to get the price and then return a div with the name, price and percent
+
   render() {
-    console.log(this.props.authStore.cryptocurrencies);
+    const { authStore } = this.props;
+
+    if (!authStore.cryptocurrenciesLoading) {
+      const stats = authStore.cryptocurrencies.map(e =>
+        fetch(`https://api.coinmarketcap.com/v2/ticker/${e.api_id}/`)
+          .then(res => res.json())
+          .then(json => {
+            console.log(json);
+          })
+      );
+    }
     return (
       <div className="profilestats box">
         <h1 className="profilestats-title">Your portfolio: $999,999</h1>
