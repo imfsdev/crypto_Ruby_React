@@ -38,7 +38,9 @@ class UsersController < ApplicationController
 
   def add_user_cryptocurrencies
     @user = User.find(@current_user["id"])
-    @user.cryptocurrencies << Cryptocurrency.find((params[:id]))
+    params["coins"].each do |coin|
+      @user.cryptocurrencies << Cryptocurrency.find((coin["value"]))
+    end
     render json: {
       user: @current_user.id,
       cryptocurrencies: @current_user.cryptocurrencies
