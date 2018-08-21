@@ -9,7 +9,8 @@ import axios from 'axios';
 class CoinSearch extends Component {
   state = {
     selectedOptions: [],
-    options: []
+    options: [],
+    loading: false
   };
   componentDidMount() {
     axios.get('/api/cryptocurrencies').then(res => {
@@ -30,12 +31,14 @@ class CoinSearch extends Component {
     // console.log(`Option selected:`, selectedOptions);
   };
   handleSubmit = () => {
+    this.setState({ loading: true });
     axios.post('/auth/user_cryptocurrencies', { coins: this.state.selectedOptions }).then(res => {
       console.log(res);
+      this.setState({ selectedOptions: [], loading: false });
     });
   };
   render() {
-    const { selectedOptions } = this.state;
+    const { selectedOptions, options, loading } = this.state;
     return (
       <div className="coinsearch">
         <Select
@@ -45,10 +48,13 @@ class CoinSearch extends Component {
           closeMenuOnSelect={false}
           components={makeAnimated()}
           isMulti
-          options={this.state.options}
+          options={options}
         />
-        <button onClick={this.handleSubmit} className="button is-info coinsearch-button">
-          {`Add coin${this.state.selectedOptions.length > 1 ? 's' : ''} `}
+        <button
+          onClick={this.handleSubmit}
+          className={`button is-info coinsearch-button ${loading ? 'is-loading' : ''}`}
+        >
+          {`Add coin${selectedOptions.length > 1 ? 's' : ''} `}
         </button>
       </div>
     );
