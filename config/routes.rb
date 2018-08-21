@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "auth/current_user", to: "users#current_user"
 
   get "auth/user_cryptocurrencies", to: "users#user_cryptocurrencies"
-  post "auth/auser_cryptocurrencies", to: "users#add_user_cryptocurrencies"
+  post "auth/add_user_cryptocurrencies", to: "users#add_user_cryptocurrencies"
 
 
   scope "/api" do

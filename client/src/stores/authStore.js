@@ -13,17 +13,17 @@ class AuthStore {
 
   @action
   setUser = decoded => {
-    // this.user = decoded;
-    // // gets the user's username
-    // axios
-    //   .post('/auth/current_user')
-    //   .then(res => {
-    //     this.user.name = res.data.name;
-    //     this.isAuthenticated = true;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    this.user = decoded;
+    // gets the user's name
+    axios
+      .post('/auth/current_user')
+      .then(res => {
+        this.user.name = res.data.name;
+        this.isAuthenticated = true;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   // TODO: test if this works properly
