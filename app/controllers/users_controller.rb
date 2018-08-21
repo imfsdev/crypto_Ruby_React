@@ -22,21 +22,27 @@ class UsersController < ApplicationController
   end
 
   def current_user
-    @user = JWT.decode request.env["HTTP_AUTHORIZATION"].scan(/Bearer(.*)$/).flatten.last, nil, false
-    puts @user
     render json: {
-      name: @user
+      id: @current_user.id,
+      name: @current_user.name,
+      email: @current_user.email
     }.to_json, status: 200
   end
 
   def user_cryptocurrencies
-    @user = User.find(params[:id])
-    puts @user
+    render json: {
+      user: @current_user.id,
+      cryptocurrencies: @current_user.cryptocurrencies
+    }.to_json, status: 200
   end
 
   def add_user_cryptocurrencies
-    @user = User.find(params[:id])
-    puts @user
+    @user = User.find(@current_user["id"])
+    @user.cryptocurrencies << Cryptocurrency.find((params[:id]))
+    render json: {
+      user: @current_user.id,
+      cryptocurrencies: @current_user.cryptocurrencies
+    }.to_json, status: 200
   end
 
 
