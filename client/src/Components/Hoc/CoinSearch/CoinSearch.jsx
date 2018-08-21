@@ -3,6 +3,9 @@ import makeAnimated from 'react-select/lib/animated';
 import { inject, observer } from 'mobx-react';
 import Select from 'react-select';
 import axios from 'axios';
+import authStore from '../../../stores/authStore';
+
+// TODO: if the user has a coin already listed, take it out of the search and then add it back in if they don't? maybe useless
 
 //  set up a function to make a post request
 //  loading spinner until successful
@@ -12,20 +15,16 @@ import axios from 'axios';
 class CoinSearch extends Component {
   state = {
     selectedOptions: [],
+    cryptocurrencies: [],
     options: [],
     loading: false
   };
   componentDidMount() {
-    axios.get('/auth/user_cryptocurrencies').then(res => {
-      console.log(res.data);
-    });
-
     axios.get('/api/cryptocurrencies').then(res => {
       const options = res.data.map(coin => ({
         value: coin.id,
         label: coin.name
       }));
-      // console.log(options);
       this.setState({
         options
       });
@@ -38,14 +37,14 @@ class CoinSearch extends Component {
     // console.log(`Option selected:`, selectedOptions);
   };
   handleSubmit = () => {
-    this.setState({ loading: true });
-    axios.post('/auth/user_cryptocurrencies', { coins: this.state.selectedOptions }).then(res => {
-      console.log(res);
-      this.setState({ selectedOptions: [], loading: false });
-    });
+    authStore.addUserCryptocurrencies({ coins: this.state.selectedOptions });
+
+    this.setState({ selectedOptions: [] });
   };
   render() {
-    const { selectedOptions, options, loading } = this.state;
+    const { selectedOptions, options, loading, cryptocurrencies } = this.state;
+    // eslint-disable-next-line
+    const { authStore} = this.props;
     return (
       <div className="coinsearch">
         <Select
@@ -59,7 +58,9 @@ class CoinSearch extends Component {
         />
         <button
           onClick={this.handleSubmit}
-          className={`button is-info coinsearch-button ${loading ? 'is-loading' : ''}`}
+          className={`button is-info coinsearch-button ${
+            authStore.cryptocurrenciesLoading ? 'is-loading' : ''
+          }`}
         >
           {`Add coin${selectedOptions.length > 1 ? 's' : ''} `}
         </button>
