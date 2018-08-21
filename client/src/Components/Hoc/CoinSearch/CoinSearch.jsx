@@ -8,7 +8,7 @@ import axios from 'axios';
 //  remove coins from the search when done
 class CoinSearch extends Component {
   state = {
-    selectedOptions: null,
+    selectedOptions: [],
     options: []
   };
   componentDidMount() {
@@ -48,7 +48,7 @@ class CoinSearch extends Component {
           options={this.state.options}
         />
         <button onClick={this.handleSubmit} className="button is-info coinsearch-button">
-          Add coins
+          {`Add coin${this.state.selectedOptions.length > 1 ? 's' : ''} `}
         </button>
       </div>
     );
