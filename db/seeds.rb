@@ -21,6 +21,7 @@ data = r["data"]
 data.each do |item|
   Cryptocurrency.create!(
     name: item[1]["name"],
-    symbol: item[1]["symbol"]
+    symbol: item[1]["symbol"],
+    api_id: item[1]["id"]
   )
 end
