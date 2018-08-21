@@ -113,7 +113,7 @@ class Navbar extends Component {
                 ) : (
                   <ReactAux>
                     <div className="navbar-item">
-                      <p>{authStore.user.name}</p>
+                      <a href="/profile">{authStore.user.name}</a>
                     </div>
                     <button onClick={authStore.logoutUser} className="navbar-item">
                       <span>Logout</span>

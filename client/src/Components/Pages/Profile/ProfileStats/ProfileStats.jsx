@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CoinSearch from '../../../Hoc/CoinSearch/CoinSearch';
 
 //  for each coin, create a dropdown with that id being the symbol
 // on click set state to that id
@@ -10,6 +11,7 @@ export default class ProfileStats extends Component {
     return (
       <div className="profilestats box">
         <h1 className="profilestats-title">Your portfolio: $999,999</h1>
+        <CoinSearch />
         <div className="box is-fullwidth">
           <div className="profilestats-body">
             <p>

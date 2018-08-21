@@ -10,7 +10,7 @@ import ProfileStats from './ProfileStats/ProfileStats';
 @observer
 class Profile extends Component {
   componentDidMount() {
-    this.props.authStore.findUserInfo();
+    this.props.authStore.findUserProfile();
   }
   render() {
     return (
