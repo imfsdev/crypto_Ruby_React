@@ -39,7 +39,8 @@ class UsersController < ApplicationController
   def add_user_cryptocurrencies
     @user = User.find(@current_user["id"])
     params["coins"].each do |coin|
-      @user.cryptocurrencies << Cryptocurrency.find((coin["value"]))
+      @crypto = Cryptocurrency.find((coin["value"]))
+      @user.cryptocurrencies << @crypto unless @user.cryptocurrencies.include?(@crypto)
     end
     render json: {
       user: @current_user.id,
