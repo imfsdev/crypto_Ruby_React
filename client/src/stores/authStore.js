@@ -45,7 +45,7 @@ class AuthStore {
   addUserCryptocurrencies = coins => {
     this.cryptocurrenciesLoading = true;
     axios.post('/auth/user_cryptocurrencies', coins).then(res => {
-      this.cryptocurrencies = res.data;
+      this.cryptocurrencies = res.data.cryptocurrencies;
       this.cryptocurrenciesLoading = false;
     });
   };
