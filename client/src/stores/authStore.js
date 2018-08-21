@@ -5,9 +5,14 @@ import axios from 'axios';
 
 import setAuthToken from '../utils/setAuthToken';
 
+// https://api.coinmarketcap.com/v1/ticker/bitcoin/
 class AuthStore {
   @observable
   user = {};
+  @observable
+  cryptocurrencies = [];
+  @observable
+  cryptocurrenciesLoading = false;
 
   @action
   setUser = decoded => {
@@ -24,6 +29,26 @@ class AuthStore {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  @action
+  getUserCryptocurrencies = () => {
+    this.cryptocurrenciesLoading = true;
+    axios.get('/auth/user_cryptocurrencies').then(res => {
+      const { cryptocurrencies } = res.data;
+      this.cryptocurrencies = cryptocurrencies;
+      this.cryptocurrenciesLoading = false;
+    });
+  };
+
+  @action
+  addUserCryptocurrencies = coins => {
+    this.cryptocurrenciesLoading = true;
+    axios.post('/auth/user_cryptocurrencies', coins).then(res => {
+      this.cryptocurrencies = res.data;
+      console.log(this.cryptocurrencies);
+      this.cryptocurrenciesLoading = false;
+    });
   };
 
   // TODO: test if this works properly

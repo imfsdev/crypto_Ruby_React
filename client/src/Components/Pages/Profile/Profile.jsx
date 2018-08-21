@@ -10,10 +10,6 @@ import ProfileStats from './ProfileStats/ProfileStats';
 @inject('authStore')
 @observer
 class Profile extends Component {
-  componentDidMount() {
-    // this.props.authStore.findUserProfile();
-  }
-
   render() {
     const { authStore } = this.props;
     return (

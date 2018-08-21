@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import CoinSearch from '../../../Hoc/CoinSearch/CoinSearch';
 
 //  for each coin, create a dropdown with that id being the symbol
 // on click set state to that id
 // make it pick a random color from preselected ones on creation
 //  make scrollable
-
-export default class ProfileStats extends Component {
+@inject('authStore')
+@observer
+class ProfileStats extends Component {
+  componentDidMount() {
+    this.props.authStore.getUserCryptocurrencies();
+  }
   render() {
+    console.log(this.props.authStore.cryptocurrencies);
     return (
       <div className="profilestats box">
         <h1 className="profilestats-title">Your portfolio: $999,999</h1>
@@ -62,3 +68,5 @@ export default class ProfileStats extends Component {
     );
   }
 }
+
+export default ProfileStats;
