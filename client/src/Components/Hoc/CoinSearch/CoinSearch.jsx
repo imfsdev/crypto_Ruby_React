@@ -8,7 +8,7 @@ import axios from 'axios';
 //  remove coins from the search when done
 class CoinSearch extends Component {
   state = {
-    selectedOption: null,
+    selectedOptions: null,
     options: []
   };
   componentDidMount() {
@@ -17,31 +17,39 @@ class CoinSearch extends Component {
         value: coin.id,
         label: coin.name
       }));
-      console.log(options);
+      // console.log(options);
       this.setState({
         options
       });
     });
   }
 
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+  handleChange = selectedOptions => {
+    console.log(selectedOptions);
+    this.setState({ selectedOptions });
+    // console.log(`Option selected:`, selectedOptions);
+  };
+  handleSubmit = () => {
+    axios.post('/auth/user_cryptocurrencies', { coins: this.state.selectedOptions }).then(res => {
+      console.log(res);
+    });
   };
   render() {
-    const { selectedOption } = this.state;
+    const { selectedOptions } = this.state;
     return (
       <div className="coinsearch">
         <Select
           className="coinsearch-search"
-          value={selectedOption}
+          value={selectedOptions}
           onChange={this.handleChange}
           closeMenuOnSelect={false}
           components={makeAnimated()}
           isMulti
           options={this.state.options}
         />
-        <button className="button is-info coinsearch-button">Add coins</button>
+        <button onClick={this.handleSubmit} className="button is-info coinsearch-button">
+          Add coins
+        </button>
       </div>
     );
   }
