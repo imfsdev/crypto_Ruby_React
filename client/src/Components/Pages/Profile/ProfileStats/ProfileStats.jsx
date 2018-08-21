@@ -11,6 +11,7 @@ export default class ProfileStats extends Component {
     return (
       <div className="profilestats box">
         <h1 className="profilestats-title">Your portfolio: $999,999</h1>
+        <div className="profilestats-subtitle">Add a coin</div>
         <CoinSearch />
         <div className="box is-fullwidth">
           <div className="profilestats-body">

@@ -9,13 +9,10 @@ class CoinSearch extends Component {
   };
   componentDidMount() {
     axios.get('/api/cryptocurrencies').then(res => {
-      const options = [];
-      res.data.forEach(coin => {
-        options.push({
-          value: coin.id,
-          label: coin.name
-        });
-      });
+      const options = res.data.map(coin => ({
+        value: coin.id,
+        label: coin.name
+      }));
       this.setState({
         options
       });
@@ -29,7 +26,9 @@ class CoinSearch extends Component {
   render() {
     const { selectedOption } = this.state;
     return (
-      <Select value={selectedOption} onChange={this.handleChange} options={this.state.options} />
+      <div className="coinsearch">
+        <Select value={selectedOption} onChange={this.handleChange} options={this.state.options} />
+      </div>
     );
   }
 }
