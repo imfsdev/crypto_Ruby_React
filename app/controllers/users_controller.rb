@@ -22,9 +22,10 @@ class UsersController < ApplicationController
   end
 
   def current_user
-    @user = User.find(params[:id])
+    @user = JWT.decode request.env["HTTP_AUTHORIZATION"].scan(/Bearer(.*)$/).flatten.last, nil, false
+    puts @user
     render json: {
-      name: @current_user
+      name: @user
     }.to_json, status: 200
   end
 
