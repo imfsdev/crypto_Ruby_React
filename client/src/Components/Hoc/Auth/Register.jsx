@@ -125,8 +125,6 @@ const FormikAuth = withFormik({
         const decoded = jwtDecode(res.data.access_token);
         setSubmitting(false);
         authStore.setUser(decoded);
-        //  redirect after success
-        // set a flash message after success(?)
       })
       .catch(err => {
         // destructures the errors from back end
