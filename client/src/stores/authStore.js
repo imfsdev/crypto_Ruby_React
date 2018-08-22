@@ -1,7 +1,6 @@
 import { observable, action } from 'mobx';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-// import * as R from 'ramda';
 
 import setAuthToken from '../utils/setAuthToken';
 

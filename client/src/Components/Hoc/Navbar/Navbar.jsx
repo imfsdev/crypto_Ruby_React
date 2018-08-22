@@ -6,6 +6,7 @@ import Modal from '../../Hoc/Modal/Modal';
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
 
+// keeping normal a links because using Link with react router causes problems.. :(
 @inject('authStore')
 @observer
 class Navbar extends Component {
@@ -65,12 +66,16 @@ class Navbar extends Component {
                 <span />
               </span>
             </div>
-
             <div className={`navbar-menu${this.state.burgerOpen ? 'is-active' : ''}`}>
               <div className="navbar-start">
                 <a className="navbar-item" href="/">
                   Home
                 </a>
+                {authStore.user.user_id ? (
+                  <a href="/profile" className="navbar-item">
+                    Your Profile
+                  </a>
+                ) : null}
               </div>
               <div className="navbar-end">
                 {!authStore.user.user_id ? (
@@ -112,11 +117,10 @@ class Navbar extends Component {
                   </ReactAux>
                 ) : (
                   <ReactAux>
-                    <div className="navbar-item">
-                      <a href="/profile">{authStore.user.name}</a>
-                    </div>
                     <button onClick={authStore.logoutUser} className="navbar-item">
-                      <span>Logout</span>
+                      <strong>
+                        <span>Logout</span>
+                      </strong>
                     </button>
                   </ReactAux>
                 )}

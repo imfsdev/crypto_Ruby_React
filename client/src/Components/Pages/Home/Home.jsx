@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+import { Redirect } from 'react-router-dom';
+
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
 import CurrentPricesScroller from '../../Hoc/CurrentPricesScroller/CurrentPricesScroller';
 import HomeParticles from './HomeParticles/HomeParticles';
 import CardItem from './CardItem/CardItem';
 
+@inject('authStore')
+@observer
 class Home extends Component {
   render() {
+    const { authStore } = this.props;
+
     return (
       <ReactAux>
         <Navbar />
