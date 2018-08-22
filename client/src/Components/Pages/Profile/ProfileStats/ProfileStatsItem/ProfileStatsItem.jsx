@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //  css for this is inside profilestats.scss
 class ProfileStatsItem extends Component {
   render() {
+    // TODO: add a link to some kind of info on the current coin(?)
     return (
       <div className="box is-fullwidth profilestats-item">
         <div className="profilestats-item-close">

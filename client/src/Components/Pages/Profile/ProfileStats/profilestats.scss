@@ -19,7 +19,7 @@
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-around;
-      transform: translateY(-10px);
+      line-height: 100%;
     }
     p {
       // aligns everything properly
@@ -27,8 +27,9 @@
       text-align: center;
       font-weight: 600;
       color: $primary-dark;
+      display: block;
     }
-  }
+  } // the text on this could be aligned slightly better
   &-item {
     padding: 10px;
     transition: 0.4s ease-out;
@@ -59,7 +60,7 @@
   @keyframes itemAnimation {
     100% {
       opacity: 1;
-      height: 60px;
+      height: 64px;
     }
   }
 }
