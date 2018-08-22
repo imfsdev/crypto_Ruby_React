@@ -5,14 +5,13 @@ import axios from 'axios';
 
 import setAuthToken from '../utils/setAuthToken';
 
-// https://api.coinmarketcap.com/v1/ticker/bitcoin/
 class AuthStore {
   @observable
   user = {};
   @observable
-  cryptocurrencies = [];
-  @observable
   cryptocurrenciesLoading = false;
+  @observable
+  userCryptocurrencies = [];
 
   @action
   setUser = decoded => {
@@ -34,9 +33,14 @@ class AuthStore {
   @action
   getUserCryptocurrencies = () => {
     this.cryptocurrenciesLoading = true;
-    axios.get('/api/user_cryptocurrencies').then(res => {
-      this.getUserCryptoInfo(res.data.cryptocurrencies);
-    });
+    axios
+      .get('/api/user_cryptocurrencies')
+      .then(res => {
+        this.getUserCryptoInfo(res.data.cryptocurrencies);
+      })
+      .catch(err => {
+        this.cryptocurrenciesLoading = false;
+      });
   };
 
   @action
@@ -53,25 +57,12 @@ class AuthStore {
       });
   };
 
-  // @action
-  // addSingleCryptocurrencies = coins => {
-  //   this.userCryptocurrencies = [];
-  //   coins.map(e =>
-  //     fetch(`https://api.coinmarketcap.com/v2/ticker/${e.api_id}/`)
-  //       .then(item => item.json())
-  //       .then(json => {
-  //         this.userCryptocurrencies.push(json.data);
-  //       })
-  //   );
-  // };
-
-  @observable
-  userCryptocurrencies = [];
-
   @action
   getUserCryptoInfo = coins => {
     this.cryptocurrenciesLoading = true;
     this.userCryptocurrencies = [];
+    console.log('running');
+    // this works perfectly but sometimes takes a long time to load (api rate issues?)
     const finished = coins.map(coin =>
       fetch(`https://api.coinmarketcap.com/v2/ticker/${coin.api_id}/`)
         .then(item => item.json())
@@ -80,11 +71,12 @@ class AuthStore {
           this.cryptocurrenciesLoading = false;
         })
     );
-    console.log(finished);
+    //  when all fetch requests have finished, stop loading and re-render the list of coins
     Promise.all(finished).then(() => {
       this.cryptocurrenciesLoading = false;
     });
   };
+
   // TODO: test if this works properly
   @action
   logoutUser = () => {
@@ -111,21 +103,6 @@ class AuthStore {
       localStorage.setItem('jwtToken', res.data.access_token);
     });
   };
-
-  // TODO: delete/use this?
-  // @action
-  // findUserProfile = () => {
-  //   setTimeout(() => {
-  //     axios
-  //       .get('/auth/user_cryptocurrencies', this.user.id)
-  //       .then(res => {
-  //         console.log(res);
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //       });
-  //   }, 3000);
-  // };
 }
 
 export default new AuthStore();
