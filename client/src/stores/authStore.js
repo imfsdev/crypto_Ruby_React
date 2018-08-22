@@ -71,10 +71,16 @@ class AuthStore {
           this.cryptocurrenciesLoading = false;
         })
     );
+    console.log(finished);
     //  when all fetch requests have finished, stop loading and re-render the list of coins
-    Promise.all(finished).then(() => {
-      this.cryptocurrenciesLoading = false;
-    });
+    Promise.all(finished)
+      .then(() => {
+        console.log('done?');
+        this.cryptocurrenciesLoading = false;
+      })
+      .catch(err => {
+        this.cryptocurrenciesLoading = false;
+      });
   };
 
   // TODO: test if this works properly
