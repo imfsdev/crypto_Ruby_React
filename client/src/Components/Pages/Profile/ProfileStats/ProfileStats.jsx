@@ -19,6 +19,7 @@ class ProfileStats extends Component {
 
   // for each one, make an api call to get the price and then return a div with the name, price and percent
 
+  // TODO: make it rerender properly when it needs to
   render() {
     const { authStore } = this.props;
 
@@ -36,7 +37,7 @@ class ProfileStats extends Component {
                 name={item.name}
                 price={item.quotes.USD.price}
                 percent={item.quotes.USD.percent_change_24h}
-                key={item.name}
+                key={item.name || Math.random()}
               />
             ))
           )}
