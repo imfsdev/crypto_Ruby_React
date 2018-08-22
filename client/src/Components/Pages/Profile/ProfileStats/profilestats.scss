@@ -1,38 +1,74 @@
+@import '../../../../styles/variables.scss';
 .profilestats {
-  // height: 600px;
   &-title {
-    color: #2e2e2e;
+    color: $primary-dark;
     text-align: center;
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 30px;
   }
   &-subtitle {
-    color: #2e2e2e;
+    color: $primary-dark;
     text-align: left;
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 0px;
   }
   &-body {
-    display: flex;
+    @media (min-width: 768px) {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      transform: translateY(-10px);
+    }
     p {
-      flex-basis: 50%;
+      // aligns everything properly
+      flex-basis: 100%;
       text-align: center;
       font-weight: 600;
+      color: $primary-dark;
     }
   }
   &-item {
-    transition: 0.5s ease;
+    padding: 10px;
+    transition: 0.4s ease-out;
     opacity: 0;
-    animation: 0.5s itemAnimation forwards;
+    animation: 0.4s itemAnimation forwards;
     height: 0px;
+    &-close {
+      display: block;
+      text-align: right;
+      height: 17px;
+      i {
+        transition: 0.2s ease-out;
+        opacity: 1;
+        font-size: 1.1em;
+        color: $primary-dark;
+        &:hover {
+          opacity: 1;
+          transition: 0.2s ease-out;
+          color: $secondary-color;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 
-@keyframes itemAnimation {
-  100% {
-    opacity: 1;
-    height: 65px;
+@media (min-width:768px) {
+  @keyframes itemAnimation {
+    100% {
+      opacity: 1;
+      height: 60px;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  @keyframes itemAnimation {
+    100% {
+      opacity: 1;
+      height: 110px;
+    }
   }
 }
