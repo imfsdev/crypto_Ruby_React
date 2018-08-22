@@ -1,6 +1,9 @@
 # README
 To add the top 100 cryptos to the database and run 
 There is a function inside seeds.rb that makes an api call to coinmarketcap.
+
+The API is very slow at times, sometimes it will finish loading things instantly and others it could take up to 20 seconds to finish, but it does all work as it should, if the API worked faster there would be no problems at all.
+If it takes too long to load then just refresh the page and by magic it might load instantly.
 ```
 bin/rake db:reset
 ```
