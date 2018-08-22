@@ -22,6 +22,7 @@ class ProfileStats extends Component {
   // TODO: make it rerender properly when it needs to
   render() {
     const { authStore } = this.props;
+    console.log(authStore.userCryptocurrencies);
 
     return (
       <div className="profilestats box">
@@ -37,7 +38,8 @@ class ProfileStats extends Component {
                 name={item.name}
                 price={item.quotes.USD.price}
                 percent={item.quotes.USD.percent_change_24h}
-                key={item.name || Math.random()}
+                key={item.id}
+                id={item.id}
               />
             ))
           )}
