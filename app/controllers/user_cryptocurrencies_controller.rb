@@ -24,10 +24,8 @@ class UserCryptocurrenciesController < ApplicationController
 
 
   def destroy
-    @user = User.find(@current_user["id"])
-    # delete the user's cryptocurrency at that id
-    @crypto = Cryptocurrency.find((["id"]))
-    @user.cryptocurrencies << @crypto unless @user.cryptocurrencies.include?(@crypto)
+    @crypto = @current_user.cryptocurrencies.where("api_id = #{params["id"]}")
+    @current_user.cryptocurrencies.delete(@crypto)
     render json: {
       user: @current_user.id,
       cryptocurrencies: @current_user.cryptocurrencies

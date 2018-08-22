@@ -87,8 +87,17 @@ class AuthStore {
   @action
   removeUserCrypto = coin => {
     this.userCryptocurrencies.forEach((crypto, i) => {
+      console.log(coin);
       if (crypto.id === coin) {
         this.userCryptocurrencies.splice(i, 1);
+        axios
+          .delete(`/api/user_cryptocurrencies/${coin}`)
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
       }
     });
   };
