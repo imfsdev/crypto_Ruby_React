@@ -37,7 +37,7 @@ class AuthStore {
     axios.get('/auth/user_cryptocurrencies').then(res => {
       const { cryptocurrencies } = res.data;
       this.cryptocurrencies = cryptocurrencies;
-      this.cryptocurrenciesLoading = false;
+      this.getUserCryptoInfo();
     });
   };
 
@@ -48,6 +48,21 @@ class AuthStore {
       this.cryptocurrencies = res.data.cryptocurrencies;
       this.cryptocurrenciesLoading = false;
     });
+  };
+
+  @observable
+  userCryptocurrencies = [];
+
+  @action
+  getUserCryptoInfo = () => {
+    this.cryptocurrencies.map(e =>
+      fetch(`https://api.coinmarketcap.com/v2/ticker/${e.api_id}/`)
+        .then(item => item.json())
+        .then(json => {
+          this.userCryptocurrencies.push(json.data);
+          this.cryptocurrenciesLoading = false;
+        })
+    );
   };
 
   // TODO: test if this works properly

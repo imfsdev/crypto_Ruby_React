@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { inject, observer } from 'mobx-react';
+import ProfileStatsItem from './profileStatsItem';
 import CoinSearch from '../../../Hoc/CoinSearch/CoinSearch';
 
 //  for each coin, create a dropdown with that id being the symbol
@@ -11,6 +12,7 @@ import CoinSearch from '../../../Hoc/CoinSearch/CoinSearch';
 @inject('authStore')
 @observer
 class ProfileStats extends Component {
+  state = {};
   componentDidMount() {
     this.props.authStore.getUserCryptocurrencies();
   }
@@ -20,64 +22,24 @@ class ProfileStats extends Component {
   render() {
     const { authStore } = this.props;
 
-    if (!authStore.cryptocurrenciesLoading) {
-      const stats = authStore.cryptocurrencies.map(e =>
-        fetch(`https://api.coinmarketcap.com/v2/ticker/${e.api_id}/`)
-          .then(res => res.json())
-          .then(json => {
-            console.log(json);
-          })
-      );
-    }
     return (
       <div className="profilestats box">
         <h1 className="profilestats-title">Your portfolio: $999,999</h1>
         <div className="profilestats-subtitle">Add a coin</div>
         <CoinSearch />
-        <div className="box is-fullwidth">
-          <div className="profilestats-body">
-            <p>
-              <strong>Bitcoin</strong>
-            </p>
-            <p>$83827</p>
-            <p style={{ color: '#4ccc68' }}>%43.84</p>
-          </div>
-        </div>
-        <div className="box is-fullwidth">
-          <div className="profilestats-body">
-            <p>
-              <strong>Bitcoin</strong>
-            </p>
-            <p>$83827</p>
-            <p style={{ color: '#4ccc68' }}>%43.84</p>
-          </div>
-        </div>
-        <div className="box is-fullwidth">
-          <div className="profilestats-body">
-            <p>
-              <strong>Bitcoin</strong>
-            </p>
-            <p>$83827</p>
-            <p style={{ color: '#4ccc68' }}>%43.84</p>
-          </div>
-        </div>
-        <div className="box is-fullwidth">
-          <div className="profilestats-body">
-            <p>
-              <strong>Bitcoin</strong>
-            </p>
-            <p>$83827</p>
-            <p style={{ color: '#ff7777' }}>-%43.84</p>
-          </div>
-        </div>
-        <div className="box is-fullwidth">
-          <div className="profilestats-body">
-            <p>
-              <strong>Bitcoin</strong>
-            </p>
-            <p>$83827</p>
-            <p style={{ color: '#ff7777' }}>-%43.84</p>
-          </div>
+        <div>
+          {authStore.cryptocurrenciesLoading ? (
+            <div />
+          ) : (
+            authStore.userCryptocurrencies.map(item => (
+              <ProfileStatsItem
+                name={item.name}
+                price={item.quotes.USD.price}
+                percent={item.quotes.USD.percent_change_24h}
+                key={item.name}
+              />
+            ))
+          )}
         </div>
       </div>
     );
