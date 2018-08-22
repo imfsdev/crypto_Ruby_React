@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Redirect } from 'react-router-dom';
 import ReactAux from '../../Hoc/ReactAux';
 import Navbar from '../../Hoc/Navbar/Navbar';
 

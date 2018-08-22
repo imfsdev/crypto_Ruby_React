@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 // each  has custom colors?
 export default class ProfileFriends extends Component {
   render() {
-    const friends = [
-      {
-        name: 'Billy',
-        coins: [1, 2, 3, 4, 5]
-      }
-    ];
+    // const friends = [
+    //   {
+    //     name: 'Billy',
+    //     coins: [1, 2, 3, 4, 5]
+    //   }
+    // ];
 
     return (
       <div className="box">
