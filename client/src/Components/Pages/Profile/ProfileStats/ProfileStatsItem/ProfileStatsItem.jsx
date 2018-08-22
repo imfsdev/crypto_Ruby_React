@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ProfileStatsItem extends Component {
   render() {
     return (
-      <div className="box is-fullwidth">
+      <div className="box is-fullwidth profilestats-item">
         <div className="profilestats-body">
           <p>
             <strong>{this.props.name}</strong>

@@ -22,4 +22,17 @@
       font-weight: 600;
     }
   }
+  &-item {
+    transition: 0.5s ease;
+    opacity: 0;
+    animation: 0.5s itemAnimation forwards;
+    height: 0px;
+  }
+}
+
+@keyframes itemAnimation {
+  100% {
+    opacity: 1;
+    height: 65px;
+  }
 }

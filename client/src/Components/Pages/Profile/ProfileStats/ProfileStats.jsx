@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { inject, observer } from 'mobx-react';
-import ProfileStatsItem from './profileStatsItem';
+import ProfileStatsItem from './ProfileStatsItem/ProfileStatsItem';
 import CoinSearch from '../../../Hoc/CoinSearch/CoinSearch';
 
 //  for each coin, create a dropdown with that id being the symbol
