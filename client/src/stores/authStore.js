@@ -47,15 +47,17 @@ class AuthStore {
     axios.post('/auth/user_cryptocurrencies', coins).then(res => {
       this.cryptocurrencies = res.data.cryptocurrencies;
       this.cryptocurrenciesLoading = false;
+      console.log(res.data.cryptocurrencies.slice(res.data.cryptocurrencies.length - coins.length));
+
+      this.addSingleCryptocurrencies(
+        res.data.cryptocurrencies.slice(res.data.cryptocurrencies.length - coins.coins.length)
+      );
     });
   };
 
-  @observable
-  userCryptocurrencies = [];
-
   @action
-  getUserCryptoInfo = () => {
-    this.cryptocurrencies.map(e =>
+  addSingleCryptocurrencies = coins => {
+    coins.map(e =>
       fetch(`https://api.coinmarketcap.com/v2/ticker/${e.api_id}/`)
         .then(item => item.json())
         .then(json => {
@@ -65,6 +67,21 @@ class AuthStore {
     );
   };
 
+  @observable
+  userCryptocurrencies = [];
+
+  @action
+  getUserCryptoInfo = () => {
+    this.userCryptocurrencies = [];
+    this.cryptocurrencies.map(e =>
+      fetch(`https://api.coinmarketcap.com/v2/ticker/${e.api_id}/`)
+        .then(item => item.json())
+        .then(json => {
+          this.userCryptocurrencies.push(json.data);
+          this.cryptocurrenciesLoading = false;
+        })
+    );
+  };
   // TODO: test if this works properly
   @action
   logoutUser = () => {

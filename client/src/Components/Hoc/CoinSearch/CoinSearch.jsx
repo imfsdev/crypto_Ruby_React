@@ -23,7 +23,8 @@ class CoinSearch extends Component {
     axios.get('/api/cryptocurrencies').then(res => {
       const options = res.data.map(coin => ({
         value: coin.id,
-        label: coin.name
+        label: coin.name,
+        api_id: coin.api_id
       }));
       this.setState({
         options
