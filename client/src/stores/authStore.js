@@ -61,7 +61,6 @@ class AuthStore {
   getUserCryptoInfo = coins => {
     this.cryptocurrenciesLoading = true;
     this.userCryptocurrencies = [];
-    console.log('running');
     // this works perfectly but sometimes takes a long time to load (api rate issues?)
     const finished = coins.map(coin =>
       fetch(`https://api.coinmarketcap.com/v2/ticker/${coin.api_id}/`)
@@ -71,16 +70,27 @@ class AuthStore {
           this.cryptocurrenciesLoading = false;
         })
     );
-    console.log(finished);
     //  when all fetch requests have finished, stop loading and re-render the list of coins
     Promise.all(finished)
       .then(() => {
-        console.log('done?');
         this.cryptocurrenciesLoading = false;
       })
       .catch(err => {
         this.cryptocurrenciesLoading = false;
       });
+    // sometimes the API takes too long to finish loading so this stops loading after 4 seconds and they finish over time
+    setTimeout(() => {
+      this.cryptocurrenciesLoading = false;
+    }, 4000);
+  };
+
+  @action
+  removeUserCrypto = coin => {
+    this.userCryptocurrencies.forEach((crypto, i) => {
+      if (crypto.id === coin) {
+        this.userCryptocurrencies.splice(i, 1);
+      }
+    });
   };
 
   // TODO: test if this works properly
@@ -89,6 +99,7 @@ class AuthStore {
     localStorage.removeItem('jwtToken');
     setAuthToken(false);
     this.user = {};
+    this.userCryptocurrencies = [];
   };
 
   @action
