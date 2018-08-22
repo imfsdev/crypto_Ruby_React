@@ -47,11 +47,13 @@ class AuthStore {
     axios.post('/auth/user_cryptocurrencies', coins).then(res => {
       this.cryptocurrencies = res.data.cryptocurrencies;
       this.cryptocurrenciesLoading = false;
-      console.log(res.data.cryptocurrencies.slice(res.data.cryptocurrencies.length - coins.length));
-
-      this.addSingleCryptocurrencies(
-        res.data.cryptocurrencies.slice(res.data.cryptocurrencies.length - coins.coins.length)
-      );
+      // TODO: fix this because I know it can be done better
+      //  it kind of works but need some way to make it impossible to add one if it already exists
+      if (res.data.cryptocurrencies.length !== this.cryptocurrencies.length) {
+        this.addSingleCryptocurrencies(
+          res.data.cryptocurrencies.slice(res.data.cryptocurrencies.length - coins.coins.length)
+        );
+      }
     });
   };
 
