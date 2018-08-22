@@ -13,7 +13,7 @@ class ProfileStatsItem extends Component {
           <p>
             <strong>{this.props.name}</strong>
           </p>
-          <p>${this.props.price.toFixed(2)}</p>
+          <p>${this.props.price.toFixed(3)}</p>
           <p style={{ color: '#4ccc68' }}>{this.props.percent}%</p>
         </div>
       </div>
