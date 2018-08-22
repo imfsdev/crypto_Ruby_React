@@ -34,7 +34,7 @@ class AuthStore {
   @action
   getUserCryptocurrencies = () => {
     this.cryptocurrenciesLoading = true;
-    axios.get('/auth/user_cryptocurrencies').then(res => {
+    axios.get('/api/user_cryptocurrencies').then(res => {
       const { cryptocurrencies } = res.data;
       this.cryptocurrencies = cryptocurrencies;
       this.getUserCryptoInfo();
@@ -44,7 +44,7 @@ class AuthStore {
   @action
   addUserCryptocurrencies = coins => {
     this.cryptocurrenciesLoading = true;
-    axios.post('/auth/user_cryptocurrencies', coins).then(res => {
+    axios.post('/api/user_cryptocurrencies', coins).then(res => {
       this.cryptocurrencies = res.data.cryptocurrencies;
       this.cryptocurrenciesLoading = false;
       // TODO: fix this because I know it can be done better

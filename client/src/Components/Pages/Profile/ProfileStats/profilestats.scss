@@ -32,9 +32,9 @@
   } // the text on this could be aligned slightly better
   &-item {
     padding: 10px;
-    transition: 0.4s ease-out;
+    transition: 0.6s ease-out;
     opacity: 0;
-    animation: 0.4s itemAnimation forwards;
+    animation: 0.6s itemAnimation forwards;
     height: 0px;
     &-close {
       display: block;

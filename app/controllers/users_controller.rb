@@ -29,26 +29,6 @@ class UsersController < ApplicationController
     }.to_json, status: 200
   end
 
-  def user_cryptocurrencies
-    render json: {
-      user: @current_user.id,
-      cryptocurrencies: @current_user.cryptocurrencies
-    }.to_json, status: 200
-  end
-
-  def add_user_cryptocurrencies
-    @user = User.find(@current_user["id"])
-    params["coins"].each do |coin|
-      @crypto = Cryptocurrency.find((coin["value"]))
-      @user.cryptocurrencies << @crypto unless @user.cryptocurrencies.include?(@crypto)
-    end
-    render json: {
-      user: @current_user.id,
-      cryptocurrencies: @current_user.cryptocurrencies
-    }.to_json, status: 200
-  end
-
-
   private
 
     def user_params
