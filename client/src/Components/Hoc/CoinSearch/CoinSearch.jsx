@@ -15,9 +15,7 @@ import authStore from '../../../stores/authStore';
 class CoinSearch extends Component {
   state = {
     selectedOptions: [],
-    cryptocurrencies: [],
-    options: [],
-    loading: false
+    options: []
   };
   componentDidMount() {
     axios.get('/api/cryptocurrencies').then(res => {
@@ -35,7 +33,6 @@ class CoinSearch extends Component {
   handleChange = selectedOptions => {
     console.log(selectedOptions);
     this.setState({ selectedOptions });
-    // console.log(`Option selected:`, selectedOptions);
   };
   handleSubmit = () => {
     authStore.addUserCryptocurrencies({ coins: this.state.selectedOptions });
@@ -43,7 +40,7 @@ class CoinSearch extends Component {
     this.setState({ selectedOptions: [] });
   };
   render() {
-    const { selectedOptions, options, loading, cryptocurrencies } = this.state;
+    const { selectedOptions, options } = this.state;
     // eslint-disable-next-line
     const { authStore} = this.props;
     return (

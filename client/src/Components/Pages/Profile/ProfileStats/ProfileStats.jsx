@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import { inject, observer } from 'mobx-react';
 import ProfileStatsItem from './ProfileStatsItem/ProfileStatsItem';
@@ -22,7 +21,6 @@ class ProfileStats extends Component {
   // TODO: make it rerender properly when it needs to
   render() {
     const { authStore } = this.props;
-    console.log(authStore.userCryptocurrencies);
 
     return (
       <div className="profilestats box">

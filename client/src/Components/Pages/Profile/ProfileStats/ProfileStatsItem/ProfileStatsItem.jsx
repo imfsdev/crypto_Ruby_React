@@ -7,11 +7,8 @@ import { inject, observer } from 'mobx-react';
 class ProfileStatsItem extends Component {
   removeUserCrypto = () => {
     this.props.authStore.removeUserCrypto(this.props.id);
-    console.log(this.props);
   };
   render() {
-    const { authStore } = this.props;
-
     // TODO: add a link to some kind of info on the current coin(?)
     return (
       <div id={this.props.id} className="box is-fullwidth profilestats-item">
@@ -20,10 +17,22 @@ class ProfileStatsItem extends Component {
         </div>
         <div className="profilestats-body">
           <p>
-            <strong>{this.props.name}</strong>
+            <a href={`https://coinmarketcap.com/currencies/${this.props.name}`}>
+              <strong>{this.props.name}</strong>
+            </a>
           </p>
           <p>${this.props.price.toFixed(3)}</p>
-          <p style={{ color: '#4ccc68' }}>{this.props.percent}%</p>
+          {Math.sign(this.props.percent) === -1 ? (
+            <p style={{ color: '#ff4d6a' }}>
+              {this.props.percent}%{' '}
+              <i style={{ color: '#ff4d6a' }} className="fas fa-level-down-alt" />
+            </p>
+          ) : (
+            <p style={{ color: '#30e074' }}>
+              {this.props.percent}%{' '}
+              <i style={{ color: '#30e074' }} className="fas fa-level-up-alt" />
+            </p>
+          )}
         </div>
       </div>
     );

@@ -86,18 +86,11 @@ class AuthStore {
 
   @action
   removeUserCrypto = coin => {
+    //  removes the coin from the currently displaying coins if you click delete, then sends the API request to remove it from DB after
     this.userCryptocurrencies.forEach((crypto, i) => {
-      console.log(coin);
       if (crypto.id === coin) {
         this.userCryptocurrencies.splice(i, 1);
-        axios
-          .delete(`/api/user_cryptocurrencies/${coin}`)
-          .then(res => {
-            console.log(res);
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        axios.delete(`/api/user_cryptocurrencies/${coin}`).catch(err => console.log(err));
       }
     });
   };
