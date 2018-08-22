@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 
+//  css for this is inside profilestats.scss
 class ProfileStatsItem extends Component {
   render() {
     return (
       <div className="box is-fullwidth profilestats-item">
+        <div className="profilestats-item-close">
+          <i className="fas fa-times-circle" />
+        </div>
         <div className="profilestats-body">
           <p>
             <strong>{this.props.name}</strong>
           </p>
-          <p>{this.props.price}</p>
-          <p style={{ color: '#4ccc68' }}>{this.props.percent}</p>
+          <p>${this.props.price.toFixed(2)}</p>
+          <p style={{ color: '#4ccc68' }}>{this.props.percent}%</p>
         </div>
       </div>
     );
