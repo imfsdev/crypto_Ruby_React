@@ -41,7 +41,6 @@ class Navbar extends Component {
 
   render() {
     const { authStore } = this.props;
-    console.log(window.location.href);
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}

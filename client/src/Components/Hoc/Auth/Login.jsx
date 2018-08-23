@@ -94,8 +94,7 @@ const FormikAuth = withFormik({
         const decoded = jwtDecode(res.data.access_token);
         setSubmitting(false);
         authStore.setUser(decoded);
-        //  redirect after success
-        // set a flash message after success(?)
+        window.location.href = '/profile';
       })
       .catch(err => {
         console.log(err.response.data);
