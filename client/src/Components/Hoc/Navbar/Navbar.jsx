@@ -44,8 +44,7 @@ class Navbar extends Component {
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}
-        {/* makes mobile menu dark  */}
-        <nav className={`navbar ${window.innerWidth > 1089 ? 'is-transparent' : 'is-dark'}`}>
+        <nav className={`navbar ${window.innerWidth > 1089 ? 'is-transparent' : 'is-light'}`}>
           <div className="container">
             <div className="navbar-brand">
               <a className="navbar-item" href="/">

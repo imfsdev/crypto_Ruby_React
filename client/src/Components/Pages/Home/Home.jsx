@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
 import CurrentPricesScroller from '../../Hoc/CurrentPricesScroller/CurrentPricesScroller';
@@ -10,9 +10,10 @@ import CardItem from './CardItem/CardItem';
 @inject('authStore')
 @observer
 class Home extends Component {
+  homeScrollDown = () => {
+    scroll.scrollTo(600);
+  };
   render() {
-    const { authStore } = this.props;
-
     return (
       <ReactAux>
         <Navbar />
@@ -22,7 +23,7 @@ class Home extends Component {
             <div className="hero-body has-text-centered">
               <h1 className="title ">TRACK THE LATEST BITCOIN PRICES</h1>
               <h1 className="subtitle">TRACK YOUR PORTFOLIO</h1>
-              <button className="home-scroll">
+              <button onClick={this.homeScrollDown} className="home-scroll">
                 <i className="fas fa-chevron-down" />
               </button>
               <div className="columns home-cards">
