@@ -17,11 +17,15 @@
 .navbar {
   span {
     color: $primary-dark;
+  } // because for some reason maybe people will resize without refreshing and be upset it doesn't work properly
+  @media (max-width: 1086px) {
+    background-color: #fafafa !important;
   }
+  background-color: transparent;
+  background-image: none;
   &.is-transparent {
     background-color: transparent;
     background-image: none;
-    color: rgb(53, 53, 53);
   }
 }
 
@@ -29,6 +33,9 @@
   color: $primary-dark;
   @media (min-width: 1086px) {
     color: #fafafa;
+    strong {
+      color: #fafafa;
+    }
   }
   a {
     font-weight: 500;

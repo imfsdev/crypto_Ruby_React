@@ -41,6 +41,7 @@ class Navbar extends Component {
 
   render() {
     const { authStore } = this.props;
+    console.log(window.location.href);
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}
@@ -66,10 +67,13 @@ class Navbar extends Component {
               </span>
             </div>
             <div className={`navbar-menu${this.state.burgerOpen ? 'is-active' : ''}`}>
+              {/* TODO: make this work on live with proper url or react router (?? hard??) */}
               <div className="navbar-start">
-                <a className="navbar-item" href="/">
-                  Home
-                </a>
+                {window.window.location.href === 'http://localhost:3000/' ? null : (
+                  <a className="navbar-item" href="/">
+                    Home
+                  </a>
+                )}
                 {authStore.user.user_id ? (
                   <a href="/profile" className="navbar-item">
                     Your Profile
@@ -117,9 +121,7 @@ class Navbar extends Component {
                 ) : (
                   <ReactAux>
                     <button onClick={authStore.logoutUser} className="navbar-item">
-                      <strong>
-                        <span>Logout</span>
-                      </strong>
+                      <strong>Logout</strong>
                     </button>
                   </ReactAux>
                 )}
