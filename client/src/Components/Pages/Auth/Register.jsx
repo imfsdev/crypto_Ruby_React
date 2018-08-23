@@ -1,0 +1,28 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from '../../Hoc/Navbar/Navbar';
+import ReactAux from '../../Hoc/ReactAux';
+import RegisterForm from '../../Hoc/Auth/Register';
+
+export default class Signup extends Component {
+  render() {
+    return (
+      <ReactAux>
+        <Navbar />
+        <div className="page-auth">
+          <div className="page-auth-title">
+            <h1 className="title">Sign Up</h1>
+          </div>
+          <div className="page-auth-form">
+            <div className="box">
+              <RegisterForm />
+              <div className="page-auth-form-meta">
+                <Link to="/login">Already have an account?</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ReactAux>
+    );
+  }
+}

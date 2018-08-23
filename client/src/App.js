@@ -5,6 +5,8 @@ import jwtDecode from 'jwt-decode';
 
 import Home from './Components/Pages/Home/Home';
 import Profile from './Components/Pages/Profile/Profile';
+import Register from './Components/Pages/Auth/Register';
+import Login from './Components/Pages/Auth/Login';
 
 import setAuthToken from './utils/setAuthToken';
 
@@ -40,6 +42,8 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/register" exact component={Register} />
+          <Route path="/login" exact component={Login} />
         </Switch>
       </BrowserRouter>
     );

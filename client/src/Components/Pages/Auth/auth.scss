@@ -1,0 +1,30 @@
+.page-auth {
+  position: absolute;
+  z-index: -1;
+  width: 100vw !important;
+  height: 100% !important;
+  margin-top: -52px;
+  background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534626286/Crypto/blur.jpg) no-repeat center center fixed;
+  @media (min-width: 1918px) {
+    background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534633254/Crypto/blurryUHD.jpg) no-repeat center center fixed;
+  }
+  @media (min-width: 768px) {
+    height: 100% !important;
+  }
+  &-title {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  &-form {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    &-meta {
+      text-align: center;
+    }
+  }
+  .box {
+    max-width: 350px;
+  }
+}
