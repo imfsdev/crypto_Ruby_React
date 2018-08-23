@@ -6,6 +6,9 @@ import LoginForm from '../../Hoc/Auth/Login';
 
 export default class Login extends Component {
   render() {
+    if (this.props.authStore.user) {
+      window.location.href = '/profile';
+    }
     return (
       <ReactAux>
         <Navbar />
