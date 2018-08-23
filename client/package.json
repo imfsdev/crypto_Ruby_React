@@ -44,6 +44,7 @@
     "react-scroll": "^1.7.10",
     "react-select": "^2.0.0",
     "resolve": "1.6.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
@@ -71,8 +72,7 @@
     "eslint-plugin-react": "^7.11.0",
     "eslint-plugin-standard": "^3.1.0",
     "node-sass": "^4.9.3",
-    "prettier": "^1.14.2",
-    "sass-loader": "^7.1.0"
+    "prettier": "^1.14.2"
   },
   "jest": {
     "collectCoverageFrom": [
