@@ -1,0 +1,13 @@
+{
+  "name": "sdpuk-crypto",
+  "license": "MIT",
+  "engines": {
+    "node": "10.8.0",
+    "yarn": "1.9.4"
+  },
+  "scripts": {
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy"
+  }
+}
