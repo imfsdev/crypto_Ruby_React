@@ -18,13 +18,6 @@ class Navbar extends Component {
   };
   componentDidMount() {
     // fixes resizing issues for conditional class, could be done with css but is-transparent is weird
-    window.onresize = () => {
-      if (window.innerWidth > 1089) {
-        this.setState({
-          isTransparent: true
-        });
-      }
-    };
   }
 
   // toggle navbar burger menu open/close
@@ -54,7 +47,7 @@ class Navbar extends Component {
     return (
       <ReactAux>
         {this.state.modal ? <Modal modalClick={this.closeDropdowns} /> : null}
-        <nav className={`navbar ${this.state.isTransparent ? 'is-transparent' : 'is-light'}`}>
+        <nav className="navbar">
           <div className="container">
             <div className="navbar-brand">
               <a className="navbar-item" href="/">
