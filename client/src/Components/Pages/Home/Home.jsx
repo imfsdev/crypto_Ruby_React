@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import { animateScroll as scroll } from 'react-scroll';
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
@@ -45,9 +46,9 @@ class Home extends Component {
               </div>
               <CurrentPricesScroller />
               <div className="home-signup">
-                <a href="/register" className="primarybutton button is-medium">
+                <Link to="/register" className="primarybutton button is-medium">
                   Sign Up
-                </a>
+                </Link>
                 <p className="subtitle is-6 home-signup-text">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 </p>

@@ -3,7 +3,8 @@
  # app/controllers/authentication_controller.rb
 
  class ApplicationController < ActionController::API
-   before_action :authenticate_request, except: [:register, :login]
+   before_action :authenticate_request, only: %i[login register]
+
    attr_reader :current_user
 
 

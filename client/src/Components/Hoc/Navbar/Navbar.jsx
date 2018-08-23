@@ -77,9 +77,9 @@ class Navbar extends Component {
                   </a>
                 )}
                 {authStore.user.user_id ? (
-                  <a href="/profile" className="navbar-item">
+                  <Link to="/profile"className="navbar-item">
                     Your Profile
-                  </a>
+                  </Link>
                 ) : null}
               </div>
               <div className="navbar-end">
