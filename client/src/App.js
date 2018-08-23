@@ -11,7 +11,6 @@ import Login from './Components/Pages/Auth/Login';
 import setAuthToken from './utils/setAuthToken';
 
 import '../src/styles/app.scss';
-// TODO: make it so the user redirects to their profile if they are logged in (can't go to login)
 @inject('authStore')
 @observer
 class App extends Component {
@@ -25,7 +24,6 @@ class App extends Component {
       this.props.authStore.setUser(decoded);
 
       // if the jwt is expired, log them out and remove the jwt
-      // TODO: check these
       const currentTime = Date.now() / 1000;
       if (decoded.exp < currentTime) {
         // logout user

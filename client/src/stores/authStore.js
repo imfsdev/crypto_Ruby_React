@@ -94,7 +94,6 @@ class AuthStore {
     });
   };
 
-  // TODO: test if this works properly
   @action
   logoutUser = () => {
     localStorage.removeItem('jwtToken');

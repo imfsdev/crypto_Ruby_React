@@ -16,9 +16,7 @@ class ProfileStats extends Component {
     this.props.authStore.getUserCryptocurrencies();
   }
 
-  // for each one, make an api call to get the price and then return a div with the name, price and percent
-
-  // TODO: make it rerender properly when it needs to
+  // for each cryptocurrency the user has added to their profile, create a ProfileStatsItem displaying the name/price/etc
   render() {
     const { authStore } = this.props;
 

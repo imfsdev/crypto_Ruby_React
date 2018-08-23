@@ -5,7 +5,6 @@ import Select from 'react-select';
 import axios from 'axios';
 import authStore from '../../../stores/authStore';
 
-// TODO: if the user has a coin already listed, take it out of the search and then add it back in if they don't? maybe useless
 
 //  set up a function to make a post request
 //  loading spinner until successful
