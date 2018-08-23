@@ -1,7 +1,10 @@
 .auth {
   // TODO: make this work responsively
-  max-width: 350px;
+  max-width: 400px;
   z-index: 50;
+  @media (min-width: 400px) {
+    width: 350px;
+  }
 }
 
 .input.is-danger {

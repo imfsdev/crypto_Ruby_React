@@ -13,11 +13,13 @@ export default class Signup extends Component {
           <div className="page-auth-title">
             <h1 className="title">Sign Up</h1>
           </div>
-          <div className="page-auth-form">
-            <div className="box">
-              <RegisterForm />
-              <div className="page-auth-form-meta">
-                <Link to="/login">Already have an account?</Link>
+          <div className="section">
+            <div className="page-auth-form">
+              <div className="box">
+                <RegisterForm />
+                <div className="page-auth-form-meta">
+                  <Link to="/login">Already have an account?</Link>
+                </div>
               </div>
             </div>
           </div>
