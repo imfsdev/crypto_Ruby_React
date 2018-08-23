@@ -1,16 +1,21 @@
 # README
 ## https://spduk-crypto.herokuapp.com/
 
-Putting it aside for now because it's incredibly clunky, the cryptocurrency API is incredibly slow sometimes taking up to 50 seconds to make a single fetch and the react router isn't working properly, if you visit /profile for example, it just shows json instead of the real page.
+Putting it aside for now because it's incredibly clunky, the cryptocurrency API is incredibly slow sometimes taking up to 50 seconds to make a single fetch. Everything works as it should but the API is just slow.
 
-Basically there are too many small/weird problems I am having with Rails to figure it out right now being too new to it.
-
-
-It does work though.
-You can sign up and add/remove coins, it shows the price of each and it persists. It doesn't redirect after you login (because of router problems) so you have to manually visit your profile from the navbar.
+You can sign up and add/remove coins, it shows the price of each and  It doesn't redirect after you login (because of router problems) so you have to manually visit your profile from the navbar.
 
 Friends list is fake and does nothing.
 ___
+Ruby version: 2.5.1
+Node version 10.8.0
+
+Some things are installed as dependencies not devDependencies because heroku was being weird.
+
+To make it run locally: ``` bundle install``` to install ruby gems, then to install react modules ```cd client`` and run ```yarn install``` or ```npm instal```
+
+To start the dev server ```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and to start the client ```yarn --cwd client start```
+
 
 To add the top 100 cryptos to the database and run 
 There is a function inside seeds.rb that makes an api call to coinmarketcap.
@@ -20,9 +25,6 @@ If it takes too long to load then just refresh the page and by magic it might lo
 ```
 bin/rake db:reset
 ```
-
-
-To start the dev server ```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and to start the client ```yarn --cwd client start```
 
 
 
