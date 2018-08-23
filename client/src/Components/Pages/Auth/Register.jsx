@@ -10,9 +10,6 @@ import RegisterForm from '../../Hoc/Auth/Register';
 @observer
 class Register extends Component {
   render() {
-    if (this.props.authStore.user.user_id) {
-      window.location.href = '/profile';
-    }
     return (
       <ReactAux>
         <Navbar />

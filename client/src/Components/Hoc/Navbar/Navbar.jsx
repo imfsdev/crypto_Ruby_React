@@ -71,7 +71,7 @@ class Navbar extends Component {
             <div className={`navbar-menu${this.state.burgerOpen ? 'is-active' : ''}`}>
               {/* TODO: make this work on live with proper url or react router (?? hard??) */}
               <div className="navbar-start">
-                {window.window.location.href === 'http://localhost:3000/' ? null : (
+                {window.window.location.href === 'https://spduk-crypto.herokuapp.com/' ? null : (
                   <a className="navbar-item" href="/">
                     Home
                   </a>

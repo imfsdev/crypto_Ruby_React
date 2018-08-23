@@ -31,7 +31,6 @@ class App extends Component {
         // logout user
         this.props.authStore.logoutUser();
         // clear current profile
-        window.location.href = '/login';
       }
     }
   }
