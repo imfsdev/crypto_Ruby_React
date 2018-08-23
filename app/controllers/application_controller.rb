@@ -8,6 +8,10 @@
 
    include ExceptionHandler
 
+   def fallback_index_html
+     render file: "public/index.html"
+  end
+
   private
     def authenticate_request
       @current_user = AuthorizeApiRequest.call(request.headers).result

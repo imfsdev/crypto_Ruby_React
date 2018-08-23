@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   scope "/api" do
     resources :user_cryptocurrencies
   end
+
+  get "*path", to: "application#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
 end
