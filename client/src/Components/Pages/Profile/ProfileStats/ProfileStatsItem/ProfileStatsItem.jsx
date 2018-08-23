@@ -9,7 +9,6 @@ class ProfileStatsItem extends Component {
     this.props.authStore.removeUserCrypto(this.props.id);
   };
   render() {
-    // TODO: add a link to some kind of info on the current coin(?)
     return (
       <div id={this.props.id} className="box is-fullwidth profilestats-item">
         <div className="profilestats-item-close">

@@ -8,7 +8,6 @@ const HomeParticles = () => (
     params={{
       particles: {
         number: {
-          // TODO: change this to window.innerWidth / 24
           value: window.innerWidth / 24,
           density: {
             enable: true,

@@ -75,7 +75,6 @@ const FormikAuth = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    // TODO: add username limitations (spaces, etc)
     // Validations for user input
     email: Yup.string()
       .email()
