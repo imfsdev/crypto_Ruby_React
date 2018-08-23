@@ -10,9 +10,6 @@ import LoginForm from '../../Hoc/Auth/Login';
 @observer
 class Login extends Component {
   render() {
-    if (this.props.authStore.user.user_id) {
-      window.location.href = '/profile';
-    }
     return (
       <ReactAux>
         <Navbar />
