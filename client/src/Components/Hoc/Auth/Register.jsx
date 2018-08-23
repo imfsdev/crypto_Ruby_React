@@ -71,19 +71,6 @@ class Register extends Component {
               >
                 Sign Up
               </button>
-              <div className="columns">
-                <div className="column">
-                  <a href="/" className="help">
-                    Already have an account?
-                  </a>
-                </div>
-                <div className="column">
-                  <a href="/" className="help">
-                    Forgot your password?
-                  </a>
-                </div>
-              </div>
-              {/* TODO: add oauth options ? */}
             </Form>
           </div>
         </div>

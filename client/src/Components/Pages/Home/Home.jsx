@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Redirect } from 'react-router-dom';
 
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
@@ -33,12 +32,12 @@ class Home extends Component {
                   body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
                 />
                 <CardItem
-                  subtitle="Item 1"
+                  subtitle="Item 2"
                   title="Crypto"
                   body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
                 />
                 <CardItem
-                  subtitle="Item 1"
+                  subtitle="Item 3"
                   title="Crypto"
                   body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci nisl, tristique sit amet sagittis et, convallis quis magna. Proin tellus est, viverra sit amet bibendum sed, elementum non eros."
                 />
