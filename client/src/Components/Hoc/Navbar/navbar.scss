@@ -1,4 +1,5 @@
 //  displays basic links to login/logout pages if on a small screen, else it will display the dropdown login
+@import '../../../styles/variables.scss';
 .desktop-auth {
   display: none;
   @media (min-width: 1088px) {
@@ -15,7 +16,7 @@
 
 .navbar {
   span {
-    color: #fafafa;
+    color: $primary-dark;
   }
   &.is-transparent {
     background-color: transparent;
@@ -25,9 +26,15 @@
 }
 
 .navbar-item {
-  color: #fafafa;
+  color: $primary-dark;
+  @media (min-width: 1086px) {
+    color: #fafafa;
+  }
   a {
     font-weight: 500;
-    color: #fafafa;
+    color: $primary-dark;
+    @media (min-width: 1086px) {
+      color: #fafafa;
+    }
   }
 }
