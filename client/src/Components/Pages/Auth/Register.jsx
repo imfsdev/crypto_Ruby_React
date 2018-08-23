@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
+
 import Navbar from '../../Hoc/Navbar/Navbar';
 import ReactAux from '../../Hoc/ReactAux';
 import RegisterForm from '../../Hoc/Auth/Register';
 
-export default class Signup extends Component {
+@inject('authStore')
+@observer
+class Register extends Component {
   render() {
+    if (this.props.authStore.user) {
+      window.location.href = '/profile';
+    }
     return (
       <ReactAux>
         <Navbar />
@@ -28,3 +35,5 @@ export default class Signup extends Component {
     );
   }
 }
+
+export default Register;
