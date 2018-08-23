@@ -10,21 +10,26 @@ Friends list is fake and does nothing.
 ![](Crypto.jpg)
 ![](Profile.jpg)
 ___
-Ruby version: 2.5.1
-Node version 10.8.0
+* Ruby version: 2.5.1
+* Node version 10.8.0
 
-Some things are installed as dependencies not devDependencies because heroku was being weird.
+### To make it run locally:
+``` bundle install``` to install ruby gems, then to install react modules ```cd client``` and run ```yarn install``` or ```npm install```
 
-To make it run locally: ``` bundle install``` to install ruby gems, then to install react modules ```cd client`` and run ```yarn install``` or ```npm instal```
+### To start the dev server:
+```bin/rake db:migrate```
+Then run:
+```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and to start the client ```yarn --cwd client start```
 
-To start the dev server ```bin/rake start``` or you can manually start the server with ```bin/rails s -p 3001``` and to start the client ```yarn --cwd client start```
 
 
-To add the top 100 cryptos to the database and run 
+
+### To add the top 100 Cryptocurrencies to the database: 
 There is a function inside seeds.rb that makes an api call to coinmarketcap.
-
-The API is very slow at times, sometimes it will finish loading things instantly and others it could take up to 20 seconds to finish, but it does all work as it should, if the API worked faster there would be no problems at all.
-If it takes too long to load then just refresh the page and by magic it might load instantly.
+```
+bin/rake db:seed
+```
+### To reset the database
 ```
 bin/rake db:reset
 ```
