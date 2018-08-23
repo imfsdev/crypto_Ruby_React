@@ -2,8 +2,8 @@
   "name": "sdpuk-crypto",
   "license": "MIT",
   "engines": {
-    "node": "10.8.0",
-    "yarn": "1.9.4"
+    "node": "8.9.4",
+    "yarn": "1.6.0"
   },
   "scripts": {
     "build": "yarn --cwd client install && yarn --cwd client build",
