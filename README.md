@@ -1,11 +1,14 @@
-# README
+# Crypto
 ## https://spduk-crypto.herokuapp.com/
+### Hosted using heroku so it might take 10 seconds to load
 
-Putting it aside for now because it's incredibly clunky, the cryptocurrency API is incredibly slow sometimes taking up to 50 seconds to make a single fetch. Everything works as it should but the API is just slow.
+> Putting it aside for now, the cryptocurrency API is incredibly slow sometimes taking up to 50 seconds to make a single fetch. Everything works as it should but the API is sometimes just slow.
 
-You can sign up and add/remove coins, it shows the price of each and  It doesn't redirect after you login (because of router problems) so you have to manually visit your profile from the navbar.
+> You can sign up and add/remove coins, it shows the price of each and  It doesn't redirect after you login (because of router problems with rails) so you have to visit your profile from the navbar.
 
 Friends list is fake and does nothing.
+![](Crypto.jpg)
+![](Profile.jpg)
 ___
 Ruby version: 2.5.1
 Node version 10.8.0
@@ -25,28 +28,3 @@ If it takes too long to load then just refresh the page and by magic it might lo
 ```
 bin/rake db:reset
 ```
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

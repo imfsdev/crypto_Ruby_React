@@ -12,7 +12,7 @@ class Profile extends Component {
   render() {
     const { authStore } = this.props;
     return (
-      <ReactAux>
+      <div className="profile">
         <Navbar />
         {authStore.user.name ? (
           <div className="container section">
@@ -26,9 +26,9 @@ class Profile extends Component {
             </div>
           </div>
         ) : (
-          <button className="is-loading" />
-        )}
-      </ReactAux>
+            <button className="is-loading" />
+          )}
+      </div>
     );
   }
 }
