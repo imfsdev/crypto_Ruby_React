@@ -3,14 +3,15 @@
  # app/controllers/authentication_controller.rb
 
  class ApplicationController < ActionController::API
-   before_action :authenticate_request
+   before_action :authenticate_request, except: [:register, :login]
    attr_reader :current_user
+
 
    include ExceptionHandler
 
    def fallback_index_html
      render file: "public/index.html"
-  end
+ end
 
   private
     def authenticate_request
