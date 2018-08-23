@@ -2,8 +2,6 @@
 
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  before_action :authenticate_request, except: [:register, :login]
-  # skip_before_action :authenticate_
   # POST /register
   def register
     @user = User.create(user_params)

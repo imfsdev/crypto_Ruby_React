@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class UserCryptocurrenciesController < ApplicationController
-  # before_action :authenticate_request
-
   def index
     render json: {
       user: @current_user.id,
