@@ -27,13 +27,15 @@ A .env file needs to be created in the root of the project for the JWT, example:
 JWT_KEY="abc12345"
 ```
 
-To run everything on localhost:3001 using a built version of the react app, 3001 type `yarn heroku-postbuild` into the terminal and visit localhost:3001 instead of 3000.
-
 ### To start the dev server:
 
 `bin/rake db:migrate`
 Then run:
 `bin/rake start` or you can manually start the server with `bin/rails s -p 3001` and to start the client `yarn --cwd client start`
+
+### To build files and use rails to serve the front-end
+
+run `yarn heroku-postbuild` into the terminal and visit localhost:3001 instead of 3000.
 
 ### To add the top 100 Cryptocurrencies to the database:
 
