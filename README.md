@@ -6,7 +6,8 @@
 
 > Putting it aside for now, the cryptocurrency API is incredibly slow sometimes taking up to 50 seconds to make a single fetch. Everything works as it should but the API is sometimes just slow.
 
-> You can sign up and add/remove coins, it shows the price of each and It doesn't redirect after you login (because of router problems with rails) so you have to visit your profile from the navbar.
+> You can sign up and add/remove coins, it shows the price of each.
+> Sometimes it breaks for unknown reasons and you have to refresh or go back to home and then back again to the profile page
 
 Friends list is fake and does nothing.
 ![](Crypto.jpg)
