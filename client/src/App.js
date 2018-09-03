@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import jwtDecode from 'jwt-decode';
 
@@ -35,14 +35,14 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/profile"  component={Profile} />
           <Route path="/register"  component={Register} />
           <Route path="/login" exact component={Login} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
