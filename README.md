@@ -4,10 +4,7 @@
 
 ### Hosted using heroku so it might take 10 seconds to load
 
-> Putting it aside for now, the cryptocurrency API is incredibly slow sometimes taking up to 50 seconds to make a single fetch. Everything works as it should but the API is sometimes just slow.
-
 > You can sign up and add/remove coins, it shows the price of each.
-> Sometimes it breaks for unknown reasons and you have to refresh or go back to home and then back again to the profile page
 
 Friends list is fake and does nothing.
 ![](Crypto.jpg)
