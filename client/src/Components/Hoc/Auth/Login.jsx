@@ -93,7 +93,7 @@ const FormikAuth = withFormik({
         const decoded = jwtDecode(res.data.access_token);
         setSubmitting(false);
         authStore.setUser(decoded);
-        window.location.href = "https://spduk-crypto.herokuapp.com/#/profile";          
+        window.location.reload();
       })
       .catch(err => {
         console.log(err.response.data);
