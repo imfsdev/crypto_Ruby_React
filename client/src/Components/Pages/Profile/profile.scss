@@ -4,8 +4,5 @@
   width: 100vw;
   height: 100%;
   margin-top: 0px;
-  background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534626286/Crypto/blur.jpg) no-repeat center center fixed;
-  @media (min-width: 1918px) {
-    background: url(https://res.cloudinary.com/dmjolhdaq/image/upload/v1534633254/Crypto/blurryUHD.jpg) no-repeat center center fixed;
-  }
+  background-image: linear-gradient(135deg, #ffa6b7 10%, #1e2ad2 100%);
 }
