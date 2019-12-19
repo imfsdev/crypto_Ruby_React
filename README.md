@@ -1,6 +1,4 @@
-# Crypto
-
-## https://spduk-crypto.herokuapp.com/
+# Crypto Status Project (React / Rails)
 
 ### Hosted using heroku so it might take 10 seconds to load
 

@@ -40,7 +40,7 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "ramda": "^0.25.0",
-    "react": "^16.4.2",
+    "react": "^16.12",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.2",
     "react-particles-js": "^2.3.0",
